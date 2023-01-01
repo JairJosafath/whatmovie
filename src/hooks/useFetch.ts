@@ -7,6 +7,7 @@ export function useFetch() {
   const [link, setLink] = useState<string>("");
 
   useEffect(() => {
+    // console.log(link, "link");
     async function fetchData() {
       setLoading(true);
       console.log("fetching", link);

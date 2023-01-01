@@ -1,4 +1,39 @@
 export const key = "b1b2759638dee8b830bb70c97e34f3dd";
+export const source = "https://api.themoviedb.org/3";
+
+export const img_base_url = "http://image.tmdb.org/t/p/";
+export const backdrop_size = {
+  mobile: "w300",
+  tablet: "w780",
+  desktop: "w1280",
+};
+export const logo_size = {
+  xs: "w45",
+  sm: "w92",
+  md: "w154",
+  lg: "w185",
+  xl: "w300",
+  xxl: "w500",
+};
+export const poster_size = {
+  xs: "w92",
+  sm: "w154",
+  md: "w185",
+  lg: "w342",
+  xl: "w500",
+  xxl: "w780",
+};
+
+const profile_size = {
+  sm: "w45",
+  md: "w185",
+  lg: "h632",
+};
+const still_size = {
+  sm: "w92",
+  md: "w185",
+  lg: "w300",
+};
 
 export const movies = {
   getGenres: `https://api.themoviedb.org/3/genre/movie/list?api_key=${key}&language=en-US`,

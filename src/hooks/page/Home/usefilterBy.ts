@@ -16,6 +16,9 @@ export function useFilterBy() {
     setLink: setTopRatedLink,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setTopRatedLink(movies.getMoviesBy("top_rated"));
     return () => {
       setTopRatedLink("");
@@ -28,6 +31,9 @@ export function useFilterBy() {
     setLink: setPopularLink,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setPopularLink(movies.getMoviesBy("popular"));
     return () => {
       setPopularLink("");
@@ -40,6 +46,9 @@ export function useFilterBy() {
     setLink: setLatestLink,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setLatestLink(movies.getMoviesBy("latest"));
     return () => {
       setLatestLink("");
@@ -52,6 +61,9 @@ export function useFilterBy() {
     setLink: setNowPlayingLink,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setNowPlayingLink(movies.getMoviesBy("now_playing"));
     return () => {
       setNowPlayingLink("");
@@ -64,6 +76,9 @@ export function useFilterBy() {
     setLink: setUpcomingLink,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setUpcomingLink(movies.getMoviesBy("upcoming"));
     return () => {
       setUpcomingLink("");
@@ -78,6 +93,9 @@ export function useFilterBy() {
     setLink: setTopRatedLinkShow,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setTopRatedLinkShow(shows.getShowsBy("top_rated"));
     return () => {
       setTopRatedLinkShow("");
@@ -90,6 +108,9 @@ export function useFilterBy() {
     setLink: setPopularLinkShow,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setPopularLinkShow(shows.getShowsBy("popular"));
     return () => {
       setPopularLinkShow("");
@@ -102,6 +123,9 @@ export function useFilterBy() {
     setLink: setLatestLinkShow,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setLatestLinkShow(shows.getShowsBy("latest"));
     return () => {
       setLatestLinkShow("");
@@ -114,6 +138,9 @@ export function useFilterBy() {
     setLink: setAiringTodayLink,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setAiringTodayLink(shows.getShowsBy("airing_today"));
     return () => {
       setAiringTodayLink("");
@@ -126,11 +153,42 @@ export function useFilterBy() {
     setLink: setOnTheAirLink,
   } = useFetch();
   useEffect(() => {
+    if (!loading) {
+      setLoading(true);
+    }
     setOnTheAirLink(shows.getShowsBy("on_the_air"));
     return () => {
       setOnTheAirLink("");
     };
   }, [setOnTheAirLink]);
+  useEffect(() => {
+    if (
+      topRated &&
+      popular &&
+      upcoming &&
+      latest &&
+      nowPlaying &&
+      topRatedShow &&
+      popularShow &&
+      latestShow &&
+      airingToday &&
+      onTheAir
+    ) {
+      setLoading(false);
+    }
+  }, [
+    topRated,
+    popular,
+    upcoming,
+    latest,
+    nowPlaying,
+    topRatedShow,
+    popularShow,
+    latestShow,
+    airingToday,
+    onTheAir,
+  ]);
+  // useEffect(() => console.log("filter loading", loading));
   return {
     movies: { topRated, popular, upcoming, latest, nowPlaying },
     shows: { topRatedShow, popularShow, latestShow, airingToday, onTheAir },

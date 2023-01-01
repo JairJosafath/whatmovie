@@ -4,10 +4,13 @@ import { useFetch } from "../../useFetch";
 export function useCategories() {
   //filter by categories or auto-featured
   //default-auto featured, shows all categories in grid
-  const [categories, setCategories] = useState<{
-    movies: any[];
-    shows: any[];
-  }>();
+  const [categories, setCategories] = useState<
+    | {
+        movies: { genres: { id: number; name: string }[] };
+        shows: { genres: { id: number; name: string }[] };
+      }
+    | undefined
+  >();
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   //Categories Movies
@@ -19,6 +22,7 @@ export function useCategories() {
   } = useFetch();
 
   useEffect(() => {
+    setLoading(true);
     setCategoriesLink(movies.getGenres);
     return () => setCategoriesLink("");
   }, [setCategoriesLink]);
@@ -32,6 +36,7 @@ export function useCategories() {
   } = useFetch();
 
   useEffect(() => {
+    setLoading(true);
     setCategoriesLinkShows(shows.getGenres);
     return () => setCategoriesLinkShows("");
   }, [setCategoriesLinkShows]);
@@ -39,33 +44,12 @@ export function useCategories() {
   useEffect(() => {
     if (dataCategories && dataCategoriesShows) {
       setCategories({ movies: dataCategories, shows: dataCategoriesShows });
+      setLoading(false);
     }
   }, [dataCategories, dataCategoriesShows]);
 
-  useEffect(() => {
-    if (
-      !categories &&
-      (loadingCategories || loadingCategoriesShows) &&
-      !loading
-    ) {
-      setLoading(true);
-    } else if (
-      !loadingCategories &&
-      !loadingCategoriesShows &&
-      dataCategories &&
-      dataCategoriesShows &&
-      loading
-    ) {
-      setLoading(false);
-    }
-  }, [
-    loadingCategories,
-    loadingCategoriesShows,
-    dataCategories,
-    dataCategoriesShows,
-    categories,
-    loading,
-  ]);
+  // useEffect(() => console.log("cat loading", loading));
+
   return {
     categories,
     loading,
