@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  height: 550px;
-  position: relative;
+  position: absolute;
+  top: 0;
   /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Cyanocitta_cristata_FWS_%28uncropped%29.jpg/310px-Cyanocitta_cristata_FWS_%28uncropped%29.jpg"); */
+`;
 
+export const Content = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 550px;
   .grad-cover {
     position: absolute;
     top: 0;

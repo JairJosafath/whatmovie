@@ -8,7 +8,7 @@ import {
   movies,
   source,
 } from "../../api/api";
-import { Wrapper, Info, Title, Carousel, Image } from "./style";
+import { Wrapper, Info, Title, Carousel, Image, Content } from "./style";
 const arr = ["a", "b", "c", "d", "e", "f"];
 interface Props {
   hero: any[];
@@ -39,39 +39,41 @@ export default function Hero({ hero }: Props) {
   }, [active, manualClick, restartLoader]);
   return (
     <Wrapper>
-      {hero ? (
-        <>
-          <Image
-            src={`${img_base_url}${backdrop_size.desktop}/${hero[active]?.backdrop_path}`}
-            alt="info"
-          />
-          <div className="grad-cover" />
-          <Info>
-            <Title>
-              {hero[active]?.original_title
-                ? hero[active]?.original_title
-                : hero[active]?.name}
-            </Title>
-            {<p>{hero[active]?.overview}</p>}
-            <button onClick={() => nav("/movie/moreinfoTest")}>
-              More Info
-            </button>
-          </Info>
-        </>
-      ) : null}
+      <Content>
+        {hero ? (
+          <>
+            <Image
+              src={`${img_base_url}${backdrop_size.desktop}/${hero[active]?.backdrop_path}`}
+              alt="info"
+            />
+            <div className="grad-cover" />
+            <Info>
+              <Title>
+                {hero[active]?.original_title
+                  ? hero[active]?.original_title
+                  : hero[active]?.name}
+              </Title>
+              {<p>{hero[active]?.overview}</p>}
+              <button onClick={() => nav("/movie/moreinfoTest")}>
+                More Info
+              </button>
+            </Info>
+          </>
+        ) : null}
 
-      <Carousel>
-        <div className={"loader " + restartLoader}></div>
-        {hero?.map((item, index) => (
-          <div
-            key={item.id}
-            className={`circle ${arr[active] === item ? "active" : ""}`}
-            onClick={() => {
-              setManualClick(item);
-            }}
-          />
-        ))}
-      </Carousel>
+        <Carousel>
+          <div className={"loader " + restartLoader}></div>
+          {hero?.map((item, index) => (
+            <div
+              key={item.id}
+              className={`circle ${arr[active] === item ? "active" : ""}`}
+              onClick={() => {
+                setManualClick(item);
+              }}
+            />
+          ))}
+        </Carousel>
+      </Content>
     </Wrapper>
   );
 }

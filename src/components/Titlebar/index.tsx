@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Wrapper, Content, Left, Title, Right, Search } from "./style";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsFillMoonFill, BsSearch } from "react-icons/bs";
@@ -9,9 +9,25 @@ export default function Titlebar() {
   const context = useContext(DarkmodeContext);
   const [search, setSearch] = useState(false);
   const [query, setQuery] = useState("");
+  const [solidBar, setSolidBar] = useState(false);
   const nav = useNavigate();
+
+  useEffect(() => {
+    function handleEvent() {
+      window.requestAnimationFrame(() => {
+        // console.log("scrollin", window.scrollY);
+        if (window.scrollY > 400) setSolidBar(true);
+        else setSolidBar(false);
+      });
+    }
+    window.addEventListener("scroll", handleEvent, false);
+
+    return () => window.removeEventListener("scroll", handleEvent, false);
+  }, []);
+
+  useEffect(() => console.log(solidBar, "solid?"), [solidBar]);
   return (
-    <Wrapper className="title-bar">
+    <Wrapper className="title-bar" solid={solidBar}>
       <Content>
         <Left>
           <AiOutlineMenu />
@@ -21,7 +37,7 @@ export default function Titlebar() {
           </div>
         </Left>
 
-        <Title onClick={() => nav("/")}>title</Title>
+        <Title onClick={() => nav("/")}>What Movie</Title>
         <Right search={search}>
           <BsSearch onClick={() => setSearch(!search)} />
           <BsFillMoonFill

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  position: absolute;
+export const Wrapper = styled.div<{ solid: boolean }>`
+  position: sticky;
   color: ${({ theme }) => theme.color};
   height: 53px;
   width: 100%;
@@ -13,6 +13,8 @@ export const Wrapper = styled.div`
   backdrop-filter: blur(40px) opacity(0.7)
     ${({ theme }) =>
       theme.mode === "dark" ? "brightness(2.5)" : "brightness(0.7)"};
+  background: ${({ solid, theme }) => (solid ? theme.background : "")};
+
   svg {
     font-size: large;
     cursor: pointer;
@@ -25,8 +27,8 @@ export const Wrapper = styled.div`
     }
   }
   @media (max-width: 760px) {
-    height: 35px;
-    padding-top: 10px;
+    height: 27px;
+    padding: 20px 0;
   }
 `;
 
@@ -34,6 +36,9 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   gap: 100px;
+  @media (max-width: 760px) {
+    gap: 10px;
+  }
 `;
 
 export const Left = styled.div`
@@ -45,6 +50,7 @@ export const Left = styled.div`
     font-size: x-large;
     @media (max-width: 760px) {
       flex: 12;
+      margin-left: 30px;
     }
   }
   span {
@@ -71,12 +77,14 @@ export const Title = styled.span`
   font-weight: bold;
   text-align: center;
   transition: transform 300ms;
+  white-space: nowrap;
   cursor: pointer;
   :hover {
     transform: scale(1.2);
   }
   @media (max-width: 760px) {
     font-size: x-large;
+    flex: 1;
   }
 `;
 export const Right = styled.div<{ search: boolean }>`

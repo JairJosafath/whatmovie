@@ -2,7 +2,7 @@
 //   genres: { id: number; name: string }[];
 // }
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Wrapper, Genre, Content } from "./style";
 
 interface Props {
@@ -13,10 +13,15 @@ interface Props {
       }
     | undefined;
   type: "movies" | "shows";
+  setGenre: React.Dispatch<
+    React.SetStateAction<
+      { id: number; name: string; type: "movies" | "shows" } | undefined
+    >
+  >;
+  genre: { id: number; name: string; type: "movies" | "shows" } | undefined;
 }
 
-export function Genres({ filters, type }: Props) {
-  const [active, setActive] = useState("");
+export function Genres({ filters, type, setGenre, genre }: Props) {
   const genres =
     type === "movies"
       ? filters?.movies.genres
@@ -24,28 +29,19 @@ export function Genres({ filters, type }: Props) {
       ? filters?.shows.genres
       : [];
 
-  function handleScroll(e: React.UIEvent<HTMLDivElement, UIEvent>) {
-    // window.requestAnimationFrame(() => {
-    //   console.log("scrolling", window.scrollBy);
-    // });
-  }
-
-  function handleFilter({ id, name }: { id: Number; name: string }) {
-    setActive(name);
-  }
   return (
     <>
       <Wrapper>
-        <Content onScroll={(e) => handleScroll(e)}>
+        <Content>
           <Genre>{type} by Genre</Genre>
           {genres
-            ? genres?.map((genre: { id: number; name: string }) => (
+            ? genres?.map(({ name, id }: { id: number; name: string }) => (
                 <Genre
-                  key={genre?.id}
-                  onClick={() => handleFilter(genre)}
-                  className={genre.name === active ? "active" : ""}
+                  key={id}
+                  onClick={() => setGenre({ name, id, type })}
+                  className={name === genre?.name ? "active" : ""}
                 >
-                  {genre?.name}
+                  {name}
                 </Genre>
               ))
             : null}

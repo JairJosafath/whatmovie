@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: relative;
-
+  top: 550px;
   padding: 20px;
   width: 90%;
-
-  margin-top: 40px;
+  margin-top: 80px;
+  margin-bottom: 60px;
 `;
 
 export const Content = styled.div`
@@ -26,6 +26,12 @@ export const Content = styled.div`
     padding-top: 0;
     :active {
       transform: scale(1);
+    }
+    @media (max-width: 1200px) {
+      font-size: x-large;
+    }
+    @media (max-width: 1000px) {
+      font-size: medium;
     }
   }
 
@@ -57,6 +63,9 @@ export const Content = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+  @media (max-width: 760px) {
+    gap: 20px;
+  }
 `;
 export const Genre = styled.div`
   flex: 1 1 0;
@@ -72,5 +81,16 @@ export const Genre = styled.div`
     background-color 300ms ease;
   :active {
     transform: scale(0.9);
+  }
+  @media (max-width: 1200px) {
+    min-width: 150px;
+  }
+  @media (max-width: 1000px) {
+    min-width: 100px;
+  }
+  @media (max-width: 760px) {
+    min-width: 65px;
+    border: none;
+    white-space: pre-wrap;
   }
 `;
