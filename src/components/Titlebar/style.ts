@@ -50,7 +50,6 @@ export const Left = styled.div`
     font-size: x-large;
     @media (max-width: 760px) {
       flex: 12;
-      margin-left: 30px;
     }
   }
   span {
