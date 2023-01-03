@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { movies, shows } from "../../../api/api";
+import { Movie, Show } from "../../../types/types";
+import { addAttr, compare, uniqueArray } from "../../../util/utilities";
 import { useFetch } from "../../useFetch";
 
 export function useFilterBy() {
   //show grid of movies when filter is activated
-  const [filtered, setFiltered] = useState<{}>();
+  const [list, setList] = useState<Movie[] | Show[] | any>();
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   //filter by
@@ -163,6 +165,7 @@ export function useFilterBy() {
   }, [setOnTheAirLink]);
   useEffect(() => {
     if (
+      loading &&
       topRated &&
       popular &&
       upcoming &&
@@ -172,8 +175,38 @@ export function useFilterBy() {
       popularShow &&
       latestShow &&
       airingToday &&
-      onTheAir
+      onTheAir &&
+      !compare(
+        list,
+        uniqueArray([
+          ...addAttr(topRated.results, { type: "movies" }),
+          ...addAttr(popular.results, { type: "movies" }),
+          ...addAttr(upcoming.results, { type: "movies" }),
+          latest,
+          ...addAttr(nowPlaying.results, { type: "movies" }),
+          ...addAttr(topRatedShow.results, { type: "shows" }),
+          ...addAttr(popularShow.results, { type: "shows" }),
+          latestShow,
+          ...addAttr(airingToday.results, { type: "shows" }),
+          ...addAttr(onTheAir.results, { type: "shows" }),
+        ])
+      )
     ) {
+      const temp2 = uniqueArray([
+        ...addAttr(topRated.results, { type: "movies" }),
+        ...addAttr(popular.results, { type: "movies" }),
+        ...addAttr(upcoming.results, { type: "movies" }),
+        latest,
+        ...addAttr(nowPlaying.results, { type: "movies" }),
+        ...addAttr(topRatedShow.results, { type: "shows" }),
+        ...addAttr(popularShow.results, { type: "shows" }),
+        latestShow,
+        ...addAttr(airingToday.results, { type: "shows" }),
+        ...addAttr(onTheAir.results, { type: "shows" }),
+      ]);
+
+      setList(uniqueArray(temp2));
+      // console.log(uniqueArray([...temp.slice(0, 50)]), "unique");
       setLoading(false);
     }
   }, [
@@ -187,12 +220,55 @@ export function useFilterBy() {
     latestShow,
     airingToday,
     onTheAir,
+    list,
+    loading,
   ]);
   // useEffect(() => console.log("filter loading", loading));
   return {
-    movies: { topRated, popular, upcoming, latest, nowPlaying },
-    shows: { topRatedShow, popularShow, latestShow, airingToday, onTheAir },
+    list,
+    topRated,
+    popular,
+    upcoming,
+    latest,
+    nowPlaying,
+    topRatedShow,
+    popularShow,
+    latestShow,
+    airingToday,
+    onTheAir,
     loading,
     isError,
   };
 }
+
+// const temp = [
+//   ...addAttr(topRated, {
+//     featured: "topRated",
+//     type: "movies",
+//   }),
+//   ...addAttr(popular, { featured: "popular", type: "movies" }),
+//   ...addAttr(upcoming, {
+//     featured: "upcoming",
+//     type: "movies",
+//   }),
+//   latest,
+//   ...addAttr(nowPlaying, {
+//     featured: "nowPlaying",
+//     type: "movies",
+//   }),
+//   ...addAttr(topRatedShow, {
+//     featured: "topRatedShow",
+//     type: "shows",
+//   }),
+//   ...addAttr(popularShow, {
+//     featured: "popularShow",
+//     type: "shows",
+//   }),
+//   latestShow,
+//   ...addAttr(airingToday, {
+//     featured: "airingToday",
+//     type: "shows",
+//   }),
+//   ...addAttr(onTheAir, { featured: "onTheAir", type: "shows" }),
+// ];
+// console.log(temp);

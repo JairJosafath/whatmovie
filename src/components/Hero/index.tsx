@@ -8,15 +8,19 @@ import {
   movies,
   source,
 } from "../../api/api";
+import { Movie, Show } from "../../types/types";
+import { shuffle } from "../../util/utilities";
 import { Wrapper, Info, Title, Carousel, Image, Content } from "./style";
-const arr = ["a", "b", "c", "d", "e", "f"];
 interface Props {
-  hero: any[];
+  hero: Show[] | Movie[] | any;
 }
 export default function Hero({ hero }: Props) {
   const [active, setActive] = useState(0);
-  const [manualClick, setManualClick] = useState<false | string>(false);
+  const [manualClick, setManualClick] = useState<false | string | Show | Movie>(
+    false
+  );
   const [restartLoader, setRestarLoader] = useState("animate");
+  const [featured, setFeatured] = useState<any[]>();
   const nav = useNavigate();
   useEffect(() => {
     let timerID: any;
@@ -37,15 +41,37 @@ export default function Hero({ hero }: Props) {
     }
     return () => clearTimeout(timerID);
   }, [active, manualClick, restartLoader]);
+
+  useEffect(
+    () => (hero ? setFeatured(shuffle(hero).slice(0, 6)) : undefined),
+    [hero]
+  );
   return (
     <Wrapper>
       <Content>
         {hero ? (
           <>
-            <Image
-              src={`${img_base_url}${backdrop_size.desktop}/${hero[active]?.backdrop_path}`}
-              alt="info"
-            />
+            <Image backdrop_path={hero[active]?.backdrop_path}>
+              <source
+                srcSet={`${img_base_url}${backdrop_size.desktop}/${
+                  hero[active]?.backdrop_path
+                } ${backdrop_size.desktop.substring(1)}w`}
+                media={`(min-width: 1200px)`}
+              />
+              <source
+                srcSet={`${img_base_url}${backdrop_size.tablet}/${
+                  hero[active]?.backdrop_path
+                } ${backdrop_size.tablet.substring(1)}w`}
+                media={`(min-width: 300px)`}
+              />
+              <source
+                srcSet={`${img_base_url}${backdrop_size.mobile}/${
+                  hero[active]?.backdrop_path
+                } ${backdrop_size.mobile.substring(1)}w`}
+                media={`(max-width: 300px)`}
+              />
+              <img src={""} alt="banner" />
+            </Image>
             <div className="grad-cover" />
             <Info>
               <Title>
@@ -63,10 +89,15 @@ export default function Hero({ hero }: Props) {
 
         <Carousel>
           <div className={"loader " + restartLoader}></div>
-          {hero?.map((item, index) => (
+          {featured?.map((item, index) => (
             <div
               key={item.id}
-              className={`circle ${arr[active] === item ? "active" : ""}`}
+              className={`circle ${
+                featured[active]?.id === item?.id &&
+                featured[active]?.name === item?.name
+                  ? "active"
+                  : ""
+              }`}
               onClick={() => {
                 setManualClick(item);
               }}

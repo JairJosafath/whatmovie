@@ -6,7 +6,7 @@ import { DarkmodeContext, GLobalStyle, theme } from "./GlobalStyles";
 import Routes from "./routes/MyRoutes";
 
 export default function App() {
-  const [darkMode, setDarkmode] = useState(true);
+  const [darkMode, setDarkmode] = useState(false);
   return (
     <DarkmodeContext.Provider value={{ darkMode, setDarkmode }}>
       <ThemeProvider theme={!darkMode ? theme.light : theme.dark}>

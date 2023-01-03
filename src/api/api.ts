@@ -85,3 +85,36 @@ export const people = {
     };
   },
 };
+
+export const companies = [
+  {
+    id: 109755,
+    logo_path: "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+    name: "Walt Disney Studios",
+    origin_country: "US",
+  },
+  {
+    id: 178464,
+    logo_path: "/tyHnxjQJLH6h4iDQKhN5iqebWmX.png",
+    name: "Netflix",
+    origin_country: "US",
+  },
+  {
+    id: 3268,
+    logo_path: "/tuomPhY2UtuPTqqFnKMVHvSb724.png",
+    name: "HBO",
+    origin_country: "US",
+  },
+  {
+    id: 158691,
+    logo_path: "/s5ELD35ShWgVKQxgERHM2iP5bXA.png",
+    name: "HBO Max",
+    origin_country: "US",
+  },
+  {
+    id: 114247,
+    logo_path: "/kgZDD6zGSEH6zOq0d6BNUy2hdWK.png",
+    name: "YouTube",
+    origin_country: "US",
+  },
+];

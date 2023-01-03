@@ -11,8 +11,9 @@ export function useHome() {
   // const { hero, loading: loadingHero, isError: isErrorHero } = useHero();
 
   const {
-    movies,
-    shows,
+    list,
+    popular,
+    popularShow,
     loading: loadingFiltered,
     isError: isErrorFiltered,
   } = useFilterBy();
@@ -34,8 +35,9 @@ export function useHome() {
   useEffect(() => console.log("loading", loading), [loading]);
   return {
     categories,
-    movies,
-    shows,
+    list,
+    popular,
+    popularShow,
     loading,
     error,
   };

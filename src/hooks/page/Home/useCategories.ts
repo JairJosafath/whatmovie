@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { movies, shows } from "../../../api/api";
+import { companies, movies, shows } from "../../../api/api";
+
+import { addAttr } from "../../../util/utilities";
 import { useFetch } from "../../useFetch";
 export function useCategories() {
   //filter by categories or auto-featured
   //default-auto featured, shows all categories in grid
   const [categories, setCategories] = useState<
-    | {
-        movies: { genres: { id: number; name: string }[] };
-        shows: { genres: { id: number; name: string }[] };
-      }
+    | { id: number; name: string; type: "movies" | "shows" | "companies" }[]
     | undefined
   >();
   const [loading, setLoading] = useState(false);
@@ -43,12 +42,17 @@ export function useCategories() {
 
   useEffect(() => {
     if (dataCategories && dataCategoriesShows) {
-      setCategories({ movies: dataCategories, shows: dataCategoriesShows });
+      setCategories([
+        ...addAttr(dataCategoriesShows.genres, { type: "shows" }),
+
+        ...addAttr(dataCategories.genres, { type: "movies" }),
+        ...addAttr(companies, { type: "companies" }),
+      ]);
       setLoading(false);
     }
   }, [dataCategories, dataCategoriesShows]);
 
-  // useEffect(() => console.log("cat loading", loading));
+  // useEffect(() => console.log("cat ", categories));
 
   return {
     categories,

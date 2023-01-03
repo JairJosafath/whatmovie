@@ -1,48 +1,42 @@
-import { Genres } from "../../components/Filters";
+import { Filter, Genres } from "../../components/Filters";
 import Hero from "../../components/Hero";
 import ListGrid from "../../components/List.Grid";
 import { useHome } from "../../hooks/page/Home/useHome";
 import { useEffect, useState } from "react";
 import { filterById, uniqueArray } from "../../util/utilities";
-import { Movie } from "../../types/types";
+import { Movie, Show } from "../../types/types";
 
 export function Home() {
-  const { movies, shows, categories, loading } = useHome();
+  const { list, popular, popularShow, categories, loading } = useHome();
+  const [hero, setHero] = useState();
+  const [byGenre, setByGenre] = useState();
+  const [filter, setFilter] = useState<Filter>();
 
-  const [genre, setGenre] = useState<{
-    id: number;
-    name: string;
-    type: "movies" | "shows";
-  }>();
+  // useEffect(
+  //   () =>
+  //     setHero(
+  //       popular
+  //         ? popular?.filter((item: Movie | Show) => item?.featured === "popular")
+  //         : null
+  //     ),
+  //   [list]
+  // );
 
-  const [filtered, setFiltered] = useState<Movie[] | any[]>();
-  const hero: any[] = !loading
-    ? movies?.popular?.results
-        .slice(0, 3)
-        .concat(shows?.popularShow?.results.slice(0, 3))
-    : [];
   useEffect(() => {
-    if (genre && movies && !loading) {
-      const popular = filterById(movies?.popular?.results, genre?.id);
-      const nowPlaying = filterById(movies?.nowPlaying?.results, genre?.id);
-      const topRated = filterById(movies?.topRated?.results, genre?.id);
-      const upcoming = filterById(movies?.upcoming?.results, genre?.id);
-      if (
-        popular &&
-        nowPlaying &&
-        topRated &&
-        upcoming &&
-        JSON.stringify(filtered) !==
-          JSON.stringify(
-            uniqueArray([...popular, ...nowPlaying, ...topRated, ...upcoming])
-          )
-      ) {
-        setFiltered(
-          uniqueArray([...popular, ...nowPlaying, ...topRated, ...upcoming])
-        );
-      }
-    }
-  }, [genre, movies, loading, filtered]);
+    // setByGenre(
+    //   list?.filter((item: any) => {
+    //     console.log(item, "item");
+    //     if (item.type === "movies") {
+    //       return item.filter_ids.includes(filter?.id);
+    //     }
+    //     if (item.type === "shows") {
+    //       return item.filter_ids.includes(filter?.id);
+    //     }
+    //     return false;
+    //   })
+    // );
+    console.log("filter", filter);
+  }, [filter, list]);
 
   return (
     <>
@@ -50,14 +44,19 @@ export function Home() {
         <h1>Loading</h1>
       ) : (
         <>
-          <Hero hero={hero} />
+          <Hero
+            hero={
+              popular && popularShow
+                ? [...popular?.results, ...popularShow?.results].slice(0, 20)
+                : []
+            }
+          />
           <Genres
             filters={categories}
-            type={"movies"}
-            setGenre={setGenre}
-            genre={genre}
+            setFilterType={setFilter}
+            filterType={filter}
           />
-          <ListGrid list={filtered} type={"movies"} />
+          <ListGrid list={byGenre} />
         </>
       )}
     </>

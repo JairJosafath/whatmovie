@@ -1,15 +1,18 @@
 import styled from "styled-components";
+import { backdrop_size, img_base_url } from "../../api/api";
 
 export const Wrapper = styled.div`
   position: absolute;
+  width: 100%;
   top: 0;
+
   /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Cyanocitta_cristata_FWS_%28uncropped%29.jpg/310px-Cyanocitta_cristata_FWS_%28uncropped%29.jpg"); */
 `;
 
 export const Content = styled.div`
   position: relative;
-  width: 100vw;
-  height: 550px;
+
+  height: auto;
   .grad-cover {
     position: absolute;
     top: 0;
@@ -29,6 +32,15 @@ export const Content = styled.div`
     @media (max-width: 760px) {
       height: 600px;
     }
+  }
+  @media (max-width: 1200px) {
+    height: 680px;
+    width: 100%;
+  }
+
+  @media (max-width: 760px) {
+    height: 600px;
+    width: 100%;
   }
 `;
 
@@ -150,17 +162,22 @@ export const Carousel = styled.div`
     justify-content: center;
     right: 30px;
     width: 60%;
+    margin-bottom: 30px;
   }
 `;
 
-export const Image = styled.img`
-  width: 100%;
-  height: auto;
-  max-height: 700px;
-  object-fit: cover;
-  object-position: 0 0;
-  @media (max-width: 1190px) {
-    object-position: 50% 50%;
-    height: 100%;
+export const Image = styled.picture<{
+  backdrop_path: string;
+}>`
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    object-fit: cover;
+    object-position: 0 0;
+    @media (max-width: 1190px) {
+      object-position: 50% 50%;
+      height: 100%;
+    }
   }
 `;
