@@ -5,7 +5,11 @@ import { BsFillMoonFill, BsFillSunFill, BsSearch } from "react-icons/bs";
 import { DarkmodeContext } from "../../GlobalStyles";
 import { useNavigate } from "react-router-dom";
 
-export default function Titlebar() {
+interface Props {
+  setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Titlebar({ setShowNav }: Props) {
   const context = useContext(DarkmodeContext);
   const [search, setSearch] = useState(false);
   const [query, setQuery] = useState("");
@@ -15,7 +19,6 @@ export default function Titlebar() {
   useEffect(() => {
     function handleEvent() {
       window.requestAnimationFrame(() => {
-        // console.log("scrollin", window.scrollY);
         if (window.scrollY > 400) setSolidBar(true);
         else setSolidBar(false);
       });
@@ -30,7 +33,7 @@ export default function Titlebar() {
     <Wrapper className="title-bar" solid={solidBar} search={search}>
       <Content>
         <Left>
-          <AiOutlineMenu />
+          <AiOutlineMenu onClick={() => setShowNav(true)} />
           <div>
             {/* <span onClick={() => nav("movies")}>movies</span>
             <span onClick={() => nav("shows")}>shows</span> */}

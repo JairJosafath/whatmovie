@@ -6,12 +6,12 @@ export const theme = {
     mode: "light",
     background: "black",
     backgroundFaded: "rgba(0,0,0,.5)",
-    color: "white",
+    color: "#F5F5F5",
     colorFaded: "rgba(255,255,255,.5)",
   },
   dark: {
     mode: "dark",
-    background: "white",
+    background: "#F5F5F5",
     backgroundFaded: "rgba(255,255,255,.3)",
     color: "black",
     colorFaded: "rgba(0,0,0,.2)",
@@ -20,8 +20,8 @@ export const theme = {
 
 export const GLobalStyle = createGlobalStyle<{ darkmode: boolean }>`
 body{
-  color: ${({ darkmode }) => (!darkmode ? "white" : "black")};
-  background: ${({ darkmode }) => (darkmode ? "white" : "black")};
+  color: ${({ darkmode }) => (!darkmode ? "#F5F5F5" : "black")};
+  background: ${({ darkmode }) => (darkmode ? "#F5F5F5" : "black")};
 }
 `;
 

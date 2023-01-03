@@ -54,7 +54,6 @@ export function Genres({ filters, setFilter, type, setType }: Props) {
   const [active, setActive] = useState<string>("HBO");
 
   useEffect(() => {
-    console.log("running");
     const temp = filters?.filter((item) =>
       type?.label.includes("Featured")
         ? item.type === type?.type && featuredNames.includes(item.name)

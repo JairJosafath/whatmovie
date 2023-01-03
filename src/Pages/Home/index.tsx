@@ -4,6 +4,7 @@ import ListGrid from "../../components/List.Grid";
 import { useHome } from "../../hooks/page/Home/useHome";
 import { useEffect, useState } from "react";
 import { compare } from "../../util/utilities";
+import { useSearchParams } from "react-router-dom";
 
 export const options = [
   { label: "Movies by Genre", type: "movies", type2: "genre" },
@@ -40,7 +41,11 @@ export function Home() {
     | undefined
   >();
   const [type, setType] = useState<Filter>();
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    console.log(searchParams, "search params");
+  }, [searchParams]);
   useEffect(() => {
     const index = Math.floor(Math.random() * 5);
     setType(options[index]);
