@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div<{ solid: boolean }>`
+export const Wrapper = styled.div<{ solid: boolean; search: boolean }>`
   position: sticky;
   color: ${({ theme }) => theme.color};
   height: 53px;
@@ -9,12 +9,14 @@ export const Wrapper = styled.div<{ solid: boolean }>`
   left: 0;
   z-index: 10;
   padding-top: 20px;
-  transition: background-color 300ms ease, color 300ms ease;
-  backdrop-filter: blur(40px) opacity(0.7)
+  transition: background-color ${({ search }) => (!search ? "2s" : "300ms")}
+      ease,
+    color 300ms ease;
+  backdrop-filter: blur(1.5rem) opacity(0.83)
     ${({ theme }) =>
       theme.mode === "dark" ? "brightness(2.5)" : "brightness(0.7)"};
-  background: ${({ solid, theme }) => (solid ? theme.background : "")};
-
+  background: ${({ solid, theme }) => (solid ? theme.background : null)};
+  background: ${({ search, theme }) => (search ? theme.background : null)};
   svg {
     font-size: large;
     cursor: pointer;
@@ -26,6 +28,16 @@ export const Wrapper = styled.div<{ solid: boolean }>`
       opacity: 0.5;
     }
   }
+  :hover {
+    background: ${({ theme, search, solid }) =>
+      solid
+        ? null
+        : search
+        ? theme.background
+        : theme.mode === "light"
+        ? `linear-gradient(90deg,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0.1881127450980392) 30%,rgba(0, 0, 0, 0) 51%,rgba(0, 0, 0, 0.36458333333333337) 71%,rgba(0, 0, 0, 1) 100%)`
+        : `linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.1881127450980392) 30%, rgba(255,255,255,0) 51%, rgba(255,255,255,0.36458333333333337) 71%, rgba(255,255,255,1) 100%)`};
+  }
   @media (max-width: 760px) {
     height: 27px;
     padding: 20px 0;
@@ -36,6 +48,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   gap: 100px;
+
   @media (max-width: 760px) {
     gap: 10px;
   }
@@ -79,7 +92,7 @@ export const Title = styled.span`
   white-space: nowrap;
   cursor: pointer;
   :hover {
-    transform: scale(1.2);
+    transform: scale(1.01);
   }
   @media (max-width: 760px) {
     font-size: x-large;
@@ -103,21 +116,23 @@ export const Right = styled.div<{ search: boolean }>`
 `;
 export const Search = styled.div<{ search: boolean }>`
   display: grid;
-  height: ${({ search }) => (search ? "60px" : 0)};
+  height: ${({ search }) => (search ? "70px" : 0)};
   align-items: center;
-  transition: height 300ms ease, background-color 300ms ease, color 300ms ease;
-  backdrop-filter: brightness(0.1);
-  /* border: 3px solid red; */
+  transition: height 500ms ease, background-color 300ms ease, color 300ms ease;
+  background: ${({ theme, search }) => (search ? theme.background : null)};
+  backdrop-filter: ${({ search }) =>
+    !search ? "blur(1.5rem) opacity(0.4)" : null};
+  margin-top: 10px;
   input {
     height: ${({ search }) => (search ? "60%" : 0)};
     opacity: ${({ search }) => (search ? 1 : 0)};
     width: 80%;
     margin: 0 auto;
     padding: 0;
-    border: none;
+    border-color: black;
     text-align: center;
     font-size: large;
-    transition: height 300ms ease, opacity 300ms ease, border-width 300ms ease;
+    transition: height 100ms ease, opacity 300ms ease, border-width 300ms ease;
     border-radius: 3rem;
     :hover {
       border-width: 2px;

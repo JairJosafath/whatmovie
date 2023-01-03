@@ -206,7 +206,6 @@ export function useFilterBy() {
       ]);
 
       setList(uniqueArray(temp2));
-      // console.log(uniqueArray([...temp.slice(0, 50)]), "unique");
       setLoading(false);
     }
   }, [

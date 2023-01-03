@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Wrapper, Content, Left, Title, Right, Search } from "./style";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { BsFillMoonFill, BsSearch } from "react-icons/bs";
+import { BsFillMoonFill, BsFillSunFill, BsSearch } from "react-icons/bs";
 import { DarkmodeContext } from "../../GlobalStyles";
 import { useNavigate } from "react-router-dom";
 
@@ -27,22 +27,28 @@ export default function Titlebar() {
 
   useEffect(() => console.log(solidBar, "solid?"), [solidBar]);
   return (
-    <Wrapper className="title-bar" solid={solidBar}>
+    <Wrapper className="title-bar" solid={solidBar} search={search}>
       <Content>
         <Left>
           <AiOutlineMenu />
           <div>
-            <span onClick={() => nav("movies")}>movies</span>
-            <span onClick={() => nav("shows")}>shows</span>
+            {/* <span onClick={() => nav("movies")}>movies</span>
+            <span onClick={() => nav("shows")}>shows</span> */}
           </div>
         </Left>
 
         <Title onClick={() => nav("/")}>What Movie</Title>
         <Right search={search}>
           <BsSearch onClick={() => setSearch(!search)} />
-          <BsFillMoonFill
-            onClick={() => context?.setDarkmode(!context?.darkMode)}
-          />
+          {context?.darkMode ? (
+            <BsFillMoonFill
+              onClick={() => context?.setDarkmode(!context?.darkMode)}
+            />
+          ) : (
+            <BsFillSunFill
+              onClick={() => context?.setDarkmode(!context?.darkMode)}
+            />
+          )}
         </Right>
       </Content>
       <Search search={search}>

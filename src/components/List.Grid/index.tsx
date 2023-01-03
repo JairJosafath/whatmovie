@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { img_base_url, poster_size } from "../../api/api";
 import {
   Movie as MovieInterface,
@@ -11,13 +12,22 @@ interface Props {
   list: MovieInterface[] | ShowInterface[] | any[] | undefined;
 }
 export default function ListGrid({ list }: Props) {
-  // useEffect(() => console.log("filtered list", list), [list]);
+  const nav = useNavigate();
   return (
     <Wrapper>
       <Content>
         {list
           ? list?.map((item: MovieInterface | ShowInterface | any) => (
-              <Movie key={`${item.id}-${item.type}`}>
+              <Movie
+                key={`${item.id}-${item.type}`}
+                onClick={() =>
+                  nav(
+                    item?.type === "movies"
+                      ? `movie/${item?.id}`
+                      : `show/${item?.id}`
+                  )
+                }
+              >
                 <img
                   src={`${img_base_url}${poster_size.md}/${item.poster_path}`}
                   alt="poster"

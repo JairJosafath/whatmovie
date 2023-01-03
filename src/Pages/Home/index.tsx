@@ -3,58 +3,133 @@ import Hero from "../../components/Hero";
 import ListGrid from "../../components/List.Grid";
 import { useHome } from "../../hooks/page/Home/useHome";
 import { useEffect, useState } from "react";
-import { filterById, uniqueArray } from "../../util/utilities";
-import { Movie, Show } from "../../types/types";
+import { compare } from "../../util/utilities";
 
+export const options = [
+  { label: "Movies by Genre", type: "movies", type2: "genre" },
+  { label: "Shows by Genre", type: "shows", type2: "genre" },
+  { label: "Featured Movies", type: "movies", type2: "featured" },
+  { label: "Featured Shows", type: "shows", type2: "featured" },
+  { label: "By Company", type: "companies", type2: "companies" },
+];
 export function Home() {
-  const { list, popular, popularShow, categories, loading } = useHome();
-  const [hero, setHero] = useState();
-  const [byGenre, setByGenre] = useState();
-  const [filter, setFilter] = useState<Filter>();
+  const {
+    list,
+    topRated,
+    popular,
+    upcoming,
+    latest,
+    nowPlaying,
+    topRatedShow,
+    popularShow,
+    latestShow,
+    airingToday,
+    onTheAir,
+    categories,
+    loading,
+  } = useHome();
 
-  // useEffect(
-  //   () =>
-  //     setHero(
-  //       popular
-  //         ? popular?.filter((item: Movie | Show) => item?.featured === "popular")
-  //         : null
-  //     ),
-  //   [list]
-  // );
+  const [hero, setHero] = useState<any[]>();
+  const [byGenre, setByGenre] = useState();
+  const [filter, setFilter] = useState<
+    | {
+        id: number;
+        name: string;
+        type: "movies" | "shows" | "companies";
+      }
+    | undefined
+  >();
+  const [type, setType] = useState<Filter>();
 
   useEffect(() => {
-    // setByGenre(
-    //   list?.filter((item: any) => {
-    //     console.log(item, "item");
-    //     if (item.type === "movies") {
-    //       return item.filter_ids.includes(filter?.id);
-    //     }
-    //     if (item.type === "shows") {
-    //       return item.filter_ids.includes(filter?.id);
-    //     }
-    //     return false;
-    //   })
-    // );
-    console.log("filter", filter);
-  }, [filter, list]);
+    const index = Math.floor(Math.random() * 5);
+    setType(options[index]);
+  }, []);
+  useEffect(() => {
+    let listFilteredByType = list
+      ?.filter((item: any) => item.type === filter?.type)
+      .filter((item: any) => {
+        if (item?.type === "companies") {
+          return false;
+        }
+        if (type?.type2 === "featured") {
+          return false;
+        }
+        if (
+          (type?.type === "movies" || type?.type === "shows") &&
+          type?.type2 !== "featured"
+        )
+          return item.genre_ids?.includes(filter?.id);
+        return false;
+      });
 
+    if (listFilteredByType?.length < 1) {
+      switch (filter?.name.toLowerCase().replace(" ", "")) {
+        case "popular":
+          compare(filter?.type, "movies")
+            ? (listFilteredByType = popular.results)
+            : (listFilteredByType = popularShow.results);
+          break;
+        case "toprated":
+          compare(filter?.type, "movies")
+            ? (listFilteredByType = topRated.results)
+            : (listFilteredByType = topRatedShow.results);
+          break;
+        case "upcoming":
+          listFilteredByType = upcoming.results;
+          break;
+        case "nowplaying":
+          listFilteredByType = nowPlaying.results;
+          break;
+        case "airingtoday":
+          listFilteredByType = airingToday.results;
+          break;
+        case "ontheair":
+          listFilteredByType = onTheAir.results;
+          break;
+        default:
+          break;
+      }
+      setByGenre(listFilteredByType);
+    } else {
+      setByGenre(listFilteredByType);
+    }
+  }, [
+    filter,
+    list,
+    type,
+    topRated,
+    popular,
+    upcoming,
+    latest,
+    nowPlaying,
+    topRatedShow,
+    popularShow,
+    latestShow,
+    airingToday,
+    onTheAir,
+  ]);
+
+  useEffect(
+    () =>
+      popular && popularShow
+        ? setHero([...popular?.results, ...popularShow?.results].slice(0, 20))
+        : undefined,
+    [popular, popularShow]
+  );
   return (
     <>
       {loading ? (
         <h1>Loading</h1>
       ) : (
         <>
-          <Hero
-            hero={
-              popular && popularShow
-                ? [...popular?.results, ...popularShow?.results].slice(0, 20)
-                : []
-            }
-          />
+          <Hero hero={hero} />
           <Genres
             filters={categories}
-            setFilterType={setFilter}
-            filterType={filter}
+            setFilter={setFilter}
+            filter={filter}
+            type={type}
+            setType={setType}
           />
           <ListGrid list={byGenre} />
         </>

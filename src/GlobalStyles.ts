@@ -5,12 +5,16 @@ export const theme = {
   light: {
     mode: "light",
     background: "black",
+    backgroundFaded: "rgba(0,0,0,.5)",
     color: "white",
+    colorFaded: "rgba(255,255,255,.5)",
   },
   dark: {
     mode: "dark",
     background: "white",
+    backgroundFaded: "rgba(255,255,255,.3)",
     color: "black",
+    colorFaded: "rgba(0,0,0,.2)",
   },
 };
 

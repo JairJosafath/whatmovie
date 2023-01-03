@@ -12,8 +12,16 @@ export function useHome() {
 
   const {
     list,
+    topRated,
     popular,
+    upcoming,
+    latest,
+    nowPlaying,
+    topRatedShow,
     popularShow,
+    latestShow,
+    airingToday,
+    onTheAir,
     loading: loadingFiltered,
     isError: isErrorFiltered,
   } = useFilterBy();
@@ -36,8 +44,16 @@ export function useHome() {
   return {
     categories,
     list,
+    topRated,
     popular,
+    upcoming,
+    latest,
+    nowPlaying,
+    topRatedShow,
     popularShow,
+    latestShow,
+    airingToday,
+    onTheAir,
     loading,
     error,
   };

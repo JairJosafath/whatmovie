@@ -80,7 +80,7 @@ export default function Hero({ hero }: Props) {
                   : hero[active]?.name}
               </Title>
               {<p>{hero[active]?.overview}</p>}
-              <button onClick={() => nav("/movie/moreinfoTest")}>
+              <button onClick={() => nav(`/movie/${hero[active]?.id}`)}>
                 More Info
               </button>
             </Info>

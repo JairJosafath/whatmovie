@@ -47,6 +47,14 @@ export function useCategories() {
 
         ...addAttr(dataCategories.genres, { type: "movies" }),
         ...addAttr(companies, { type: "companies" }),
+        { id: 0, name: "Popular", type: "movies" },
+        { id: 1, name: "Top Rated", type: "movies" },
+        { id: 2, name: "Upcoming", type: "movies" },
+        { id: 3, name: "Now Playing", type: "movies" },
+        { id: 4, name: "Popular", type: "shows" },
+        { id: 5, name: "Top Rated", type: "shows" },
+        { id: 6, name: "Airing Today", type: "shows" },
+        { id: 7, name: "On the Air", type: "shows" },
       ]);
       setLoading(false);
     }

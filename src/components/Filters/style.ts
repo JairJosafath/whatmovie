@@ -34,6 +34,8 @@ export const Content = styled.div<{ show: boolean }>`
     font-size: x-large;
     padding-top: 0;
     white-space: nowrap;
+
+    background-color: ${({ theme }) => theme.background};
     :active {
       transform: scale(1);
     }
@@ -51,11 +53,7 @@ export const Content = styled.div<{ show: boolean }>`
   div:last-child {
     margin-right: 80px;
   }
-  .active {
-    background-color: ${({ theme }) => theme.color};
-    color: ${({ theme }) => theme.background};
-  }
-  background-color: ${({ theme }) => theme.background};
+
   mask: ${({ theme }) =>
     theme.mode === "dark"
       ? `linear-gradient(
@@ -83,7 +81,11 @@ export const Content = styled.div<{ show: boolean }>`
     gap: 5px;
   }
 `;
-export const Genre = styled.div<{ isCompany?: boolean; isDark?: boolean }>`
+export const Genre = styled.div<{
+  isCompany?: boolean;
+  isDark?: boolean;
+  isActive?: boolean;
+}>`
   flex: 1 1 0;
   padding: 4px;
   border: solid 1px ${({ theme }) => theme.color};
@@ -93,13 +95,19 @@ export const Genre = styled.div<{ isCompany?: boolean; isDark?: boolean }>`
   min-width: 200px;
   text-align: center;
   cursor: pointer;
-  background: ${({ theme }) => theme.background};
   border: ${({ isCompany }) => (isCompany ? "none" : null)};
   transition: transform 300ms ease, color 300ms ease,
     background-color 300ms ease;
+  color: ${({ theme, isActive }) => (isActive ? theme.background : null)};
+  background: ${({ isDark, theme, isActive }) =>
+    isDark && theme.mode === "dark" && isActive
+      ? theme.colorFaded
+      : isActive
+      ? theme.color
+      : isDark && theme.mode === "light"
+      ? theme.colorFaded
+      : null};
 
-  background: ${({ isDark, theme }) =>
-    isDark && theme.mode === "light" ? theme.color : theme.background};
   :active {
     transform: scale(0.9);
   }

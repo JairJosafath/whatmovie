@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   position: relative;
-
   height: auto;
   .grad-cover {
     position: absolute;
@@ -24,7 +23,7 @@ export const Content = styled.div`
     background-image: ${({ theme }) =>
       theme.mode === "light"
         ? `linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6124824929971988) 27%, rgba(255,255,255,0) 100%)`
-        : ` linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 27%, rgba(255,255,255,0) 100%)`};
+        : ` linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 27%, rgba(255,255,255,0) 100%)`};
     @media (max-width: 1200px) {
       height: 680px;
     }

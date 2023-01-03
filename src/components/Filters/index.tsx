@@ -9,12 +9,22 @@ import {
   AiOutlineCaretUp,
 } from "react-icons/ai";
 import { companies, img_base_url, poster_size } from "../../api/api";
+import { options } from "../../Pages/Home";
 import { Wrapper, Genre, Content, Menu } from "./style";
 
 // export interface Type {
 //   type: "movies" | "shows" | "companies";
 // }
-
+const featuredNames = [
+  "Popular",
+  "Top Rated",
+  "Upcoming",
+  "Now Playing",
+  "Popular",
+  "Top Rated",
+  "Airing Today",
+  "On the Air",
+];
 export interface Filter {
   label: string;
   type: string;
@@ -25,68 +35,44 @@ interface Props {
   filters:
     | { id: number; name: string; type: "movies" | "shows" | "companies" }[]
     | undefined;
-  setFilterType: React.Dispatch<React.SetStateAction<Filter | undefined>>;
-  filterType: Filter | undefined;
+  setFilter: React.Dispatch<
+    React.SetStateAction<
+      | { id: number; name: string; type: "movies" | "shows" | "companies" }
+      | undefined
+    >
+  >;
+  filter:
+    | { id: number; name: string; type: "movies" | "shows" | "companies" }
+    | undefined;
+
+  type: Filter | undefined;
+  setType: React.Dispatch<React.SetStateAction<Filter | undefined>>;
 }
 
-const options = [
-  { label: "Movies by Genre", type: "movies", type2: "genre" },
-  { label: "Shows by Genre", type: "shows", type2: "genre" },
-  { label: "Featured Movies", type: "movies", type2: "featured" },
-  { label: "Featured Shows", type: "shows", type2: "featured" },
-  { label: "By Company", type: "companies", type2: "companies" },
-];
-export function Genres({ filters, setFilterType, filterType }: Props) {
+export function Genres({ filters, setFilter, type, setType }: Props) {
   const [showMenu, setShowMenu] = useState(false);
-  const [type, setType] = useState<Filter>(options[0]);
-  // function handleMenuClick(type: Type) {
-  //   setType(type);
-  // }
-  // function handleFilterClick(
-  //   type: {
-  //     label: string;
-  //     type: "movies" | "shows" | string;
-  //     type2: string;
-  //   },
-  //   value: any
-  // ) {
-  //   // switch (type.label) {
-  //   //   case options[0].label:
-  //   //     setFilterType({ type: type, value: {} });
-  //   //     break;
+  const [active, setActive] = useState<string>("HBO");
 
-  //   //   case options[1].label:
-  //   //     setFilterType({ type: type, value: {} });
-  //   //     break;
+  useEffect(() => {
+    console.log("running");
+    const temp = filters?.filter((item) =>
+      type?.label.includes("Featured")
+        ? item.type === type?.type && featuredNames.includes(item.name)
+        : item.type === type?.type
+    );
 
-  //   //   case options[2].label:
-  //   //     setFilterType({ type: type, value: {} });
-  //   //     break;
-
-  //   //   case options[3].label:
-  //   //     setFilterType({ type: type, value: {} });
-  //   //     break;
-
-  //   //   case options[4].label:
-  //   //     setFilterType({ type: type, value: {} });
-  //   //     break;
-
-  //   //   case options[5].label:
-  //   //     setFilterType({ type: type, value: {} });
-  //   //     break;
-
-  //   //   default:
-  //   //     break;
-  //   // }
-  //   setType(type);
-  // }
+    if (temp) {
+      setFilter(temp[0]);
+      setActive(temp[0].name);
+    }
+  }, [type, filters, setFilter]);
   return (
     <>
       <Wrapper>
         <Content show={showMenu}>
           <Genre onClick={() => setShowMenu(!showMenu)}>
             <>
-              {type.label}
+              {type?.label}
               {showMenu ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
               {
                 <Menu show={showMenu}>
@@ -103,10 +89,15 @@ export function Genres({ filters, setFilterType, filterType }: Props) {
           </Genre>
           {filters
             ? filters
-                ?.filter((item) => item.type === type.type)
-                .map(({ id, name, type: localType }, index) => (
+                ?.filter((item) =>
+                  type?.label.includes("Featured")
+                    ? item.type === type?.type &&
+                      featuredNames.includes(item.name)
+                    : item.type === type?.type
+                )
+                .map(({ id, name, type }, index) => (
                   <Genre
-                    isCompany={localType === "companies" ? true : false}
+                    isCompany={type === "companies" ? true : false}
                     isDark={
                       name.includes("HBO") ||
                       name.includes("YouTube") ||
@@ -114,11 +105,15 @@ export function Genres({ filters, setFilterType, filterType }: Props) {
                         ? true
                         : false
                     }
-                    key={`${localType}-${id}-${index}`}
-                    // onClick={() => handleFilterClick(type,localType)}
-                    // className={name === genre?.name ? "active" : ""}
+                    isActive={name === active ? true : false}
+                    key={`${type}-${id}-${index}`}
+                    onClick={() => {
+                      setFilter({ id, name, type: type });
+                      setActive(name);
+                    }}
+                    className={name === active ? "active" : ""}
                   >
-                    {localType === "companies" ? (
+                    {type === "companies" ? (
                       <img
                         src={`${img_base_url}${poster_size.xs}${
                           companies.filter((company) => id === company.id)[0]
