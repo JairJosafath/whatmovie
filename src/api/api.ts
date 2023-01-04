@@ -42,7 +42,9 @@ export const movies = {
   ) =>
     `https://api.themoviedb.org/3/movie/${type}?api_key=${key}&language=en-US&page=1`,
   search: (query: string) =>
-    `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=${1}&include_adult=false`,
+    `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${new URLSearchParams(
+      query
+    )}&page=${1}&include_adult=false`,
   getMovie: (id: string) => {
     return {
       credits: `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}&language=en-US`,
@@ -60,7 +62,9 @@ export const shows = {
   ) =>
     `https://api.themoviedb.org/3/tv/${type}?api_key=${key}&language=en-US&page=1`,
   search: (query: string) =>
-    `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&query=${query}&page=${1}&include_adult=false`,
+    `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&query=${new URLSearchParams(
+      query
+    )}&page=${1}&include_adult=false`,
   getShow: (id: string) => {
     return {
       credits: `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${key}&language=en-US`,
@@ -77,7 +81,9 @@ export const people = {
   getPeopleBy: (type: "popular" | "latest") =>
     `https://api.themoviedb.org/3/perrson/${type}?api_key=${key}&language=en-US&page=1`,
   search: (query: string) =>
-    `https://api.themoviedb.org/3/search/person?api_key=${key}&language=en-US&query=${query}&page=${1}&include_adult=false`,
+    `https://api.themoviedb.org/3/search/person?api_key=${key}&language=en-US&query=${new URLSearchParams(
+      query
+    )}&page=${1}&include_adult=false`,
   getPerson: (id: string) => {
     return {
       credits: `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${key}&language=en-US`,

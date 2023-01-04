@@ -60,6 +60,15 @@ export const Bar = styled.div<{ showNav: boolean }>`
     transition: 300ms ease, font-size 0s;
     :hover {
       padding-left: 20px;
+      border: none;
+    }
+  }
+  @media (max-width: 600px) {
+    flex: ${({ showNav }) => (showNav ? 8 : 0)};
+    p {
+      font-size: large;
+      border-bottom: 1px solid ${({ theme }) => theme.colorFaded};
+      width: 100%;
     }
   }
 `;

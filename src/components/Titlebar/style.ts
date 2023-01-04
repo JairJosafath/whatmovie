@@ -116,15 +116,15 @@ export const Right = styled.div<{ search: boolean }>`
 `;
 export const Search = styled.div<{ search: boolean }>`
   display: grid;
-  height: ${({ search }) => (search ? "70px" : 0)};
-  align-items: center;
+  height: ${({ search }) => (search ? "100%" : 0)};
   transition: height 500ms ease, background-color 300ms ease, color 300ms ease;
   background: ${({ theme, search }) => (search ? theme.background : null)};
   backdrop-filter: ${({ search }) =>
     !search ? "blur(1.5rem) opacity(0.4)" : null};
   margin-top: 10px;
+
   input {
-    height: ${({ search }) => (search ? "60%" : 0)};
+    height: ${({ search }) => (search ? "70%" : 0)};
     opacity: ${({ search }) => (search ? 1 : 0)};
     width: 80%;
     margin: 0 auto;
@@ -134,6 +134,7 @@ export const Search = styled.div<{ search: boolean }>`
     font-size: large;
     transition: height 100ms ease, opacity 300ms ease, border-width 300ms ease;
     border-radius: 3rem;
+    margin-bottom: 30px;
     :hover {
       border-width: 2px;
     }

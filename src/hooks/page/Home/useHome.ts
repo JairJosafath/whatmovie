@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCategories } from "./useCategories";
 import { useFilterBy } from "./usefilterBy";
+import { useSearch } from "./useSearch";
 
 export function useHome() {
   //handles the loading state
@@ -15,13 +16,10 @@ export function useHome() {
     topRated,
     popular,
     upcoming,
-    latest,
     nowPlaying,
     topRatedShow,
     popularShow,
-    latestShow,
     airingToday,
-    onTheAir,
     loading: loadingFiltered,
     isError: isErrorFiltered,
   } = useFilterBy();
@@ -40,20 +38,26 @@ export function useHome() {
     }
   }, [loadingFiltered, loadingCategories]);
 
-  useEffect(() => console.log("loading", loading), [loading]);
+  const {
+    setQuery,
+    query,
+    results,
+    loading: loadingSearch,
+    isError: isErrorSearch,
+  } = useSearch();
   return {
     categories,
     list,
     topRated,
     popular,
     upcoming,
-    latest,
     nowPlaying,
     topRatedShow,
     popularShow,
-    latestShow,
     airingToday,
-    onTheAir,
+    setQuery,
+    query,
+    results,
     loading,
     error,
   };

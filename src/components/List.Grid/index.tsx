@@ -9,11 +9,12 @@ import { Wrapper, Content, Movie } from "./style";
 
 interface Props {
   list: MovieInterface[] | ShowInterface[] | any[] | undefined;
+  searchmode: boolean;
 }
-export default function ListGrid({ list }: Props) {
+export default function ListGrid({ list, searchmode }: Props) {
   const nav = useNavigate();
   return (
-    <Wrapper>
+    <Wrapper searchmode={searchmode}>
       <Content>
         {list
           ? list?.map((item: MovieInterface | ShowInterface | any, index) => (

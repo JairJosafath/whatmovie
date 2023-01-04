@@ -22,6 +22,7 @@ export function useCategories() {
 
   useEffect(() => {
     setLoading(true);
+    console.log("fetching categories");
     setCategoriesLink(movies.getGenres);
     return () => setCategoriesLink("");
   }, [setCategoriesLink]);
@@ -36,6 +37,7 @@ export function useCategories() {
 
   useEffect(() => {
     setLoading(true);
+    console.log("fetching categories for shows");
     setCategoriesLinkShows(shows.getGenres);
     return () => setCategoriesLinkShows("");
   }, [setCategoriesLinkShows]);
@@ -59,8 +61,6 @@ export function useCategories() {
       setLoading(false);
     }
   }, [dataCategories, dataCategoriesShows]);
-
-  // useEffect(() => console.log("cat ", categories));
 
   return {
     categories,

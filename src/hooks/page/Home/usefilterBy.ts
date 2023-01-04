@@ -21,6 +21,7 @@ export function useFilterBy() {
     if (!loading) {
       setLoading(true);
     }
+    console.log("fetching toprated");
     setTopRatedLink(movies.getMoviesBy("top_rated"));
     return () => {
       setTopRatedLink("");
@@ -36,26 +37,28 @@ export function useFilterBy() {
     if (!loading) {
       setLoading(true);
     }
+    console.log("fetching popular");
     setPopularLink(movies.getMoviesBy("popular"));
     return () => {
       setPopularLink("");
     };
   }, [setPopularLink]);
-  const {
-    data: latest,
-    loading: latestLoading,
-    isErr: latestErr,
-    setLink: setLatestLink,
-  } = useFetch();
-  useEffect(() => {
-    if (!loading) {
-      setLoading(true);
-    }
-    setLatestLink(movies.getMoviesBy("latest"));
-    return () => {
-      setLatestLink("");
-    };
-  }, [setLatestLink]);
+  // const {
+  //   data: latest,
+  //   loading: latestLoading,
+  //   isErr: latestErr,
+  //   setLink: setLatestLink,
+  // } = useFetch();
+  // useEffect(() => {
+  //   if (!loading) {
+  //     setLoading(true);
+  //   }
+
+  //   setLatestLink(movies.getMoviesBy("latest"));
+  //   return () => {
+  //     setLatestLink("");
+  //   };
+  // }, [setLatestLink]);
   const {
     data: nowPlaying,
     loading: nowPlayingLoading,
@@ -66,6 +69,7 @@ export function useFilterBy() {
     if (!loading) {
       setLoading(true);
     }
+    console.log("fetching nowplaying");
     setNowPlayingLink(movies.getMoviesBy("now_playing"));
     return () => {
       setNowPlayingLink("");
@@ -81,6 +85,7 @@ export function useFilterBy() {
     if (!loading) {
       setLoading(true);
     }
+    console.log("fetching upcoming");
     setUpcomingLink(movies.getMoviesBy("upcoming"));
     return () => {
       setUpcomingLink("");
@@ -98,6 +103,7 @@ export function useFilterBy() {
     if (!loading) {
       setLoading(true);
     }
+    console.log("fetching toprated shows");
     setTopRatedLinkShow(shows.getShowsBy("top_rated"));
     return () => {
       setTopRatedLinkShow("");
@@ -113,26 +119,13 @@ export function useFilterBy() {
     if (!loading) {
       setLoading(true);
     }
+    console.log("fetching popular shows");
     setPopularLinkShow(shows.getShowsBy("popular"));
     return () => {
       setPopularLinkShow("");
     };
   }, [setPopularLinkShow]);
-  const {
-    data: latestShow,
-    loading: latestLoadingShow,
-    isErr: latestErrShow,
-    setLink: setLatestLinkShow,
-  } = useFetch();
-  useEffect(() => {
-    if (!loading) {
-      setLoading(true);
-    }
-    setLatestLinkShow(shows.getShowsBy("latest"));
-    return () => {
-      setLatestLinkShow("");
-    };
-  }, [setLatestLinkShow]);
+
   const {
     data: airingToday,
     loading: airingTodayLoading,
@@ -143,52 +136,35 @@ export function useFilterBy() {
     if (!loading) {
       setLoading(true);
     }
+    console.log("fetching airting today");
     setAiringTodayLink(shows.getShowsBy("airing_today"));
     return () => {
       setAiringTodayLink("");
     };
   }, [setAiringTodayLink]);
-  const {
-    data: onTheAir,
-    loading: onTheAirLoading,
-    isErr: onTheAirErr,
-    setLink: setOnTheAirLink,
-  } = useFetch();
-  useEffect(() => {
-    if (!loading) {
-      setLoading(true);
-    }
-    setOnTheAirLink(shows.getShowsBy("on_the_air"));
-    return () => {
-      setOnTheAirLink("");
-    };
-  }, [setOnTheAirLink]);
+
   useEffect(() => {
     if (
       loading &&
       topRated &&
       popular &&
       upcoming &&
-      latest &&
       nowPlaying &&
       topRatedShow &&
       popularShow &&
-      latestShow &&
       airingToday &&
-      onTheAir &&
       !compare(
         list,
         uniqueArray([
           ...addAttr(topRated.results, { type: "movies" }),
           ...addAttr(popular.results, { type: "movies" }),
           ...addAttr(upcoming.results, { type: "movies" }),
-          latest,
+
           ...addAttr(nowPlaying.results, { type: "movies" }),
           ...addAttr(topRatedShow.results, { type: "shows" }),
           ...addAttr(popularShow.results, { type: "shows" }),
-          latestShow,
+
           ...addAttr(airingToday.results, { type: "shows" }),
-          ...addAttr(onTheAir.results, { type: "shows" }),
         ])
       )
     ) {
@@ -196,13 +172,12 @@ export function useFilterBy() {
         ...addAttr(topRated.results, { type: "movies" }),
         ...addAttr(popular.results, { type: "movies" }),
         ...addAttr(upcoming.results, { type: "movies" }),
-        latest,
+
         ...addAttr(nowPlaying.results, { type: "movies" }),
         ...addAttr(topRatedShow.results, { type: "shows" }),
         ...addAttr(popularShow.results, { type: "shows" }),
-        latestShow,
+
         ...addAttr(airingToday.results, { type: "shows" }),
-        ...addAttr(onTheAir.results, { type: "shows" }),
       ]);
 
       setList(uniqueArray(temp2));
@@ -212,34 +187,36 @@ export function useFilterBy() {
     topRated,
     popular,
     upcoming,
-    latest,
+
     nowPlaying,
     topRatedShow,
     popularShow,
-    latestShow,
+
     airingToday,
-    onTheAir,
+
     list,
     loading,
   ]);
-  // useEffect(() => console.log("filter loading", loading));
+
   return {
     list,
     topRated,
     popular,
     upcoming,
-    latest,
     nowPlaying,
     topRatedShow,
     popularShow,
-    latestShow,
     airingToday,
-    onTheAir,
     loading,
     isError,
   };
 }
-
+// const {
+//   data: onTheAir,
+//   loading: onTheAirLoading,
+//   isErr: onTheAirErr,
+//   setLink: setOnTheAirLink,
+// } = useFetch();
 // const temp = [
 //   ...addAttr(topRated, {
 //     featured: "topRated",
@@ -271,3 +248,90 @@ export function useFilterBy() {
 //   ...addAttr(onTheAir, { featured: "onTheAir", type: "shows" }),
 // ];
 // console.log(temp);
+// useEffect(() => {
+//   if (!loading) {
+//     setLoading(true);
+//   }
+//   console.log("fetching toprated");
+//   setOnTheAirLink(shows.getShowsBy("on_the_air"));
+//   return () => {
+//     setOnTheAirLink("");
+//   };
+// }, [setOnTheAirLink]);
+// useEffect(() => {
+//   if (
+//     loading &&
+//     topRated &&
+//     popular &&
+//     upcoming &&
+//     latest &&
+//     nowPlaying &&
+//     topRatedShow &&
+//     popularShow &&
+//     latestShow &&
+//     airingToday &&
+//     onTheAir &&
+//     !compare(
+//       list,
+//       uniqueArray([
+//         ...addAttr(topRated.results, { type: "movies" }),
+//         ...addAttr(popular.results, { type: "movies" }),
+//         ...addAttr(upcoming.results, { type: "movies" }),
+//         latest,
+//         ...addAttr(nowPlaying.results, { type: "movies" }),
+//         ...addAttr(topRatedShow.results, { type: "shows" }),
+//         ...addAttr(popularShow.results, { type: "shows" }),
+//         latestShow,
+//         ...addAttr(airingToday.results, { type: "shows" }),
+//         ...addAttr(onTheAir.results, { type: "shows" }),
+//       ])
+//     )
+//   ) {
+//     const temp2 = uniqueArray([
+//       ...addAttr(topRated.results, { type: "movies" }),
+//       ...addAttr(popular.results, { type: "movies" }),
+//       ...addAttr(upcoming.results, { type: "movies" }),
+//       latest,
+//       ...addAttr(nowPlaying.results, { type: "movies" }),
+//       ...addAttr(topRatedShow.results, { type: "shows" }),
+//       ...addAttr(popularShow.results, { type: "shows" }),
+//       latestShow,
+//       ...addAttr(airingToday.results, { type: "shows" }),
+//       ...addAttr(onTheAir.results, { type: "shows" }),
+//     ]);
+
+//     setList(uniqueArray(temp2));
+//     setLoading(false);
+//   }
+// }, [
+//   topRated,
+//   popular,
+//   upcoming,
+//   latest,
+//   nowPlaying,
+//   topRatedShow,
+//   popularShow,
+//   latestShow,
+//   airingToday,
+//   onTheAir,
+//   list,
+//   loading,
+// ]);
+// useEffect(() => console.log("filter loading", loading));
+
+// const {
+//   data: latestShow,
+//   loading: latestLoadingShow,
+//   isErr: latestErrShow,
+//   setLink: setLatestLinkShow,
+// } = useFetch();
+// useEffect(() => {
+//   if (!loading) {
+//     setLoading(true);
+//   }
+
+//   setLatestLinkShow(shows.getShowsBy("latest"));
+//   return () => {
+//     setLatestLinkShow("");
+//   };
+// }, [setLatestLinkShow]);

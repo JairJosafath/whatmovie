@@ -60,7 +60,7 @@ interface Props {
   setActive: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-export function Genres({
+export function Filters({
   filters,
   setFilter,
   type,
@@ -77,7 +77,6 @@ export function Genres({
         ? item.type === type?.type && featuredNames.includes(item.name)
         : item.type === type?.type
     );
-    console.log("rununinirnrinr", temp);
     if (temp) {
       setFilter(temp[0]);
       setActive(temp[0]?.name);

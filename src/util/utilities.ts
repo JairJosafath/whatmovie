@@ -15,7 +15,6 @@ export function uniqueArray(array: any[]) {
   const set = new Set(json);
   const fromset = Array.from(set);
   const unique = fromset.map((item) => JSON.parse(item));
-  console.log("before", array.length, "after", unique.length);
   return unique;
 }
 

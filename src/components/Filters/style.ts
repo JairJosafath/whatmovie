@@ -47,6 +47,7 @@ export const Content = styled.div<{ show: boolean }>`
     }
     @media (max-width: 760px) {
       padding-left: 10px;
+      display: none;
     }
   }
 

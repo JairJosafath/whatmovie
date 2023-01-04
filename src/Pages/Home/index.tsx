@@ -1,10 +1,12 @@
-import { featuredNames, Filter, Genres } from "../../components/Filters";
+import { featuredNames, Filter, Filters } from "../../components/Filters";
 import Hero from "../../components/Hero";
+import SearchMode from "../../components/SearchMode";
 import ListGrid from "../../components/List.Grid";
 import { useHome } from "../../hooks/page/Home/useHome";
 import { useEffect, useState } from "react";
 import { compare } from "../../util/utilities";
 import { useSearchParams } from "react-router-dom";
+import { movies } from "../../api/api";
 
 export const options = [
   { label: "Movies by Genre", type: "movies", type2: "genre" },
@@ -19,15 +21,15 @@ export function Home() {
     topRated,
     popular,
     upcoming,
-    latest,
     nowPlaying,
     topRatedShow,
     popularShow,
-    latestShow,
     airingToday,
-    onTheAir,
     categories,
     loading,
+    setQuery,
+    query,
+    results,
   } = useHome();
 
   const [hero, setHero] = useState<any[]>();
@@ -43,6 +45,7 @@ export function Home() {
   const [type, setType] = useState<Filter>();
   const [searchParams, setSearchParams] = useSearchParams();
   const [active, setActive] = useState<string | null>("HBO");
+  const [searchMode, setSearchMode] = useState(false);
   useEffect(() => {
     if (
       searchParams.get("type") === "movies" &&
@@ -129,9 +132,6 @@ export function Home() {
         case "airingtoday":
           listFilteredByType = airingToday.results;
           break;
-        case "ontheair":
-          listFilteredByType = onTheAir.results;
-          break;
         default:
           break;
       }
@@ -146,13 +146,10 @@ export function Home() {
     topRated,
     popular,
     upcoming,
-    latest,
     nowPlaying,
     topRatedShow,
     popularShow,
-    latestShow,
     airingToday,
-    onTheAir,
   ]);
 
   useEffect(
@@ -162,23 +159,52 @@ export function Home() {
         : undefined,
     [popular, popularShow]
   );
+
+  useEffect(() => {
+    if (searchParams.get("search") === "true") {
+      const query = searchParams.get("query");
+      if (query && query.length >= 3) {
+        setQuery(query);
+        if (results) {
+          // window.scroll({ top: 0, left: 0, behavior: "smooth" });
+          setByGenre(results.results);
+          setSearchMode(true);
+
+          // return () => clearTimeout(timer);
+        }
+      }
+    }
+  }, [searchParams, setQuery, results]);
+
+  useEffect(
+    () => (searchMode ? setQuery("") : undefined),
+    [searchMode, setQuery]
+  );
+
   return (
     <>
       {loading ? (
         <h1>Loading</h1>
       ) : (
         <>
-          <Hero hero={hero} />
-          <Genres
-            filters={categories}
-            setFilter={setFilter}
-            filter={filter}
-            type={type}
-            setType={setType}
-            active={active}
-            setActive={setActive}
-          />
-          <ListGrid list={byGenre} />
+          {searchMode ? (
+            <SearchMode setSearchmode={setSearchMode} query={query} />
+          ) : (
+            <>
+              <Hero hero={hero} />
+              <Filters
+                filters={categories}
+                setFilter={setFilter}
+                filter={filter}
+                type={type}
+                setType={setType}
+                active={active}
+                setActive={setActive}
+              />
+            </>
+          )}
+
+          <ListGrid list={byGenre} searchmode={searchMode} />
         </>
       )}
     </>
