@@ -165,9 +165,7 @@ export const Carousel = styled.div`
   }
 `;
 
-export const Image = styled.picture<{
-  backdrop_path: string;
-}>`
+export const Image = styled.picture`
   img {
     width: 100%;
     height: auto;

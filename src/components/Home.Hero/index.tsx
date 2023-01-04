@@ -8,7 +8,7 @@ import {
   movies,
   source,
 } from "../../api/api";
-import { Movie, Show } from "../../types/types";
+import { Movie, Show } from "../../../trash/types";
 import { shuffle } from "../../util/utilities";
 import { Wrapper, Info, Title, Carousel, Image, Content } from "./style";
 interface Props {
@@ -51,7 +51,7 @@ export default function Hero({ hero }: Props) {
       <Content>
         {hero ? (
           <>
-            <Image backdrop_path={hero[active]?.backdrop_path}>
+            <Image>
               <source
                 srcSet={`${img_base_url}${backdrop_size.desktop}/${
                   hero[active]?.backdrop_path

@@ -17,6 +17,12 @@ export const Wrapper = styled.div<{ solid: boolean; search: boolean }>`
       theme.mode === "dark" ? "brightness(2.5)" : "brightness(0.7)"};
   background: ${({ solid, theme }) => (solid ? theme.background : null)};
   background: ${({ search, theme }) => (search ? theme.background : null)};
+  filter: ${({ solid, theme }) =>
+    solid
+      ? theme.mode === "dark"
+        ? `drop-shadow(0 1px 6px ${theme.color})`
+        : `drop-shadow(0 1px 7px rgba(130,130,130,.3))`
+      : null};
   svg {
     font-size: large;
     cursor: pointer;

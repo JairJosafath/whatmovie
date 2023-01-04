@@ -1,4 +1,4 @@
-import { Movie, Show } from "../types/types";
+import { Movie, Show } from "../../trash/types";
 
 export function removeDupes(
   array: any[] | { id: number; name: string }[] | undefined

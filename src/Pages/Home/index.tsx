@@ -1,5 +1,5 @@
-import { featuredNames, Filter, Filters } from "../../components/Filters";
-import Hero from "../../components/Hero";
+import { featuredNames, Filter, Filters } from "../../components/Home.Filters";
+import Hero from "../../components/Home.Hero";
 import SearchMode from "../../components/SearchMode";
 import ListGrid from "../../components/List.Grid";
 import { useHome } from "../../hooks/page/Home/useHome";
@@ -161,13 +161,17 @@ export function Home() {
   );
 
   useEffect(() => {
+    if ("reset" === searchParams.get("search")) {
+      setSearchMode(false);
+      return;
+    }
     if (searchParams.get("search") === "true") {
       const query = searchParams.get("query");
       if (query && query.length >= 3) {
         setQuery(query);
-        if (results) {
+        if (query) {
           // window.scroll({ top: 0, left: 0, behavior: "smooth" });
-          setByGenre(results.results);
+          setByGenre(results?.results);
           setSearchMode(true);
 
           // return () => clearTimeout(timer);

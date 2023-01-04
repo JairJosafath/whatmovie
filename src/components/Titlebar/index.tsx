@@ -40,7 +40,7 @@ export default function Titlebar({ setShowNav }: Props) {
         </Left>
         <Title
           onClick={() => {
-            nav("/");
+            nav("/", { replace: true });
             window.scroll({
               top: 0,
               left: 0,

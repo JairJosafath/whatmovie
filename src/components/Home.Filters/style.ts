@@ -25,6 +25,7 @@ export const Content = styled.div<{ show: boolean }>`
   border-radius: 4rem;
   align-items: ${({ show }) => (show ? "" : "center")};
   div:first-child {
+    flex: 1 1 auto;
     position: sticky;
     left: 0;
     padding: 30px;
@@ -32,10 +33,10 @@ export const Content = styled.div<{ show: boolean }>`
     border: none;
     font-weight: bolder;
     font-size: x-large;
-    padding-top: 0;
     white-space: nowrap;
-
+    min-width: 200px;
     background-color: ${({ theme }) => theme.background};
+    padding-top: ${({ show }) => (show ? 0 : null)};
     :active {
       transform: scale(1);
     }
@@ -69,9 +70,9 @@ export const Content = styled.div<{ show: boolean }>`
       : `linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 20%,
+    rgba(255, 255, 255, 1) 10%,
     rgba(255, 255, 255, 1) 51%,
-    rgba(255, 255, 255, 1) 77%,
+    rgba(255, 255, 255, 1) 85%,
     rgba(255, 255, 255, 0) 100%
   )
   `};
@@ -80,6 +81,26 @@ export const Content = styled.div<{ show: boolean }>`
   }
   @media (max-width: 760px) {
     gap: 5px;
+    mask: ${({ theme }) =>
+      theme.mode === "dark"
+        ? `linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 51%,
+    rgba(0, 0, 0, 1) 77%,
+    rgba(0, 0, 0, 0) 100%
+    )
+  `
+        : `linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 7%,
+    rgba(255, 255, 255, 1) 51%,
+    rgba(255, 255, 255, 1) 77%,
+    rgba(255, 255, 255, 0) 100%
+  )
+  `};
   }
 `;
 export const Genre = styled.div<{

@@ -4,7 +4,7 @@ import { img_base_url, poster_size } from "../../api/api";
 import {
   Movie as MovieInterface,
   Show as ShowInterface,
-} from "../../types/types";
+} from "../../../trash/types";
 import { Wrapper, Content, Movie } from "./style";
 
 interface Props {

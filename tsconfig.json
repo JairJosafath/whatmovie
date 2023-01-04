@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "trash/api.ts", "trash/useHero.ts"]
+  "include": ["src", "trash/api.ts", "trash/useHero.ts", "trash/types.ts"]
 }

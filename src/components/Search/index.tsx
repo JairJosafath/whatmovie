@@ -25,9 +25,9 @@ export default function Search({ search, setSearch }: Props) {
       setShowResults(false);
       setQuery("");
       setValue("");
-      setParams("");
+      if (useParams.get("clear") === "true") setParams("", { replace: true });
     }
-  }, [search, setParams]);
+  }, [search, setParams, useParams]);
   useEffect(() => {
     const timer = setTimeout(() => {
       setQuery(value);
@@ -37,9 +37,17 @@ export default function Search({ search, setSearch }: Props) {
   }, [query, value]);
   useEffect(() => {
     console.log("sweeerving");
-    if (!showResults) setParams("");
-    else nav(`/?search=true&query=${query}`);
-  }, [showResults, nav, setParams, query]);
+    if (!showResults) {
+      if (useParams.get("clear") === "true") {
+        setParams("", { replace: true });
+        setSearch(false);
+      }
+    } else if (useParams.get("search") === "reset") {
+      setParams("", { replace: true });
+      setSearch(false);
+    } else nav(`/?search=true&query=${query}`, { replace: true });
+  }, [showResults, nav, setParams, query, useParams, setSearch]);
+
   return (
     <>
       <SearchComponent search={search}>

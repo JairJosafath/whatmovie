@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { movies, shows } from "../../../api/api";
-import { Movie, Show } from "../../../types/types";
+import { Movie, Show } from "../../../../trash/types";
 import { addAttr, compare, uniqueArray } from "../../../util/utilities";
 import { useFetch } from "../../useFetch";
 

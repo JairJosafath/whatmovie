@@ -61,7 +61,7 @@ export default function Sidebar({ showNav, setShowNav }: Props) {
                           behavior: "smooth",
                         });
                       }
-                      nav(item.path);
+                      nav(item.path, { replace: true });
                       setShowNav(false);
                     }}
                   >

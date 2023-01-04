@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Results from "../components/Results";
+import Results from "../components/Home.Results";
 import { Home } from "../Pages/Home";
+import Movie from "../Pages/Movie";
 
 export default function MyRoutes() {
   return (
@@ -13,12 +14,12 @@ export default function MyRoutes() {
           errorElement={<p>Error</p>}
         />
 
-        {/* <Route
+        <Route
           path="movie/:id"
-          element={<Movie/>}
+          element={<Movie />}
           errorElement={<p>Error</p>}
         />
-        <Route
+        {/*     <Route
           path="show/:id"
           element={<Show/>}
           errorElement={<p>Error</p>}
