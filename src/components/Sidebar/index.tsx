@@ -8,15 +8,21 @@ interface Props {
 
 export const listItems = [
   { label: "Home", path: "/" },
-  { label: "Shows", path: "?type=shows" },
-  { label: "Movies", path: "?type=movies" },
-  { label: "Popular", path: "?type2=featured&name=popular&type=movies" },
-  { label: "Top Rated", path: "?type2=featured&name=toprated&type=movies" },
-  { label: "Upcoming", path: "?type2=featured&name=upcoming&type=movies" },
-  { label: "Now Playing", path: "?type2=featured&name=nowplaying&type=movies" },
+  {
+    label: "Shows",
+    path: "?type2=none&name=none&type=shows",
+  },
+  { label: "Movies", path: "?type2=none&name=none&type=movies" },
+  { label: "Popular", path: "?type2=featured&name=Popular&type=movies" },
+  { label: "Top Rated", path: "?type2=featured&name=Top%20Rated&type=movies" },
+  { label: "Upcoming", path: "?type2=featured&name=Upcoming&type=movies" },
+  {
+    label: "Now Playing",
+    path: "?type2=featured&name=Now%20Playing&type=movies",
+  },
   {
     label: "Airing Today",
-    path: "?type2=featured&name=airingtoday&type=shows",
+    path: "?type2=featured&name=Airing%20Today&type=shows",
   },
   // { label: "On the Air", path: "?type2=featured&name=ontheair&type=shows" },
 ];
@@ -48,6 +54,13 @@ export default function Sidebar({ showNav, setShowNav }: Props) {
                   <li
                     key={item.label}
                     onClick={() => {
+                      if (item.label === "Home") {
+                        window.scroll({
+                          top: 0,
+                          left: 0,
+                          behavior: "smooth",
+                        });
+                      }
                       nav(item.path);
                       setShowNav(false);
                     }}

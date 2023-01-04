@@ -15,7 +15,7 @@ import { Wrapper, Genre, Content, Menu } from "./style";
 // export interface Type {
 //   type: "movies" | "shows" | "companies";
 // }
-const featuredNames = [
+export const featuredNames = [
   "Popular",
   "Top Rated",
   "Upcoming",
@@ -24,6 +24,7 @@ const featuredNames = [
   "Top Rated",
   "Airing Today",
   "On the Air",
+  null,
 ];
 export interface Filter {
   label: string;
@@ -37,34 +38,55 @@ interface Props {
     | undefined;
   setFilter: React.Dispatch<
     React.SetStateAction<
-      | { id: number; name: string; type: "movies" | "shows" | "companies" }
+      | {
+          id: number;
+          name: string | null;
+          type: "movies" | "shows" | "companies";
+        }
       | undefined
     >
   >;
   filter:
-    | { id: number; name: string; type: "movies" | "shows" | "companies" }
+    | {
+        id: number;
+        name: string | null;
+        type: "movies" | "shows" | "companies";
+      }
     | undefined;
 
   type: Filter | undefined;
   setType: React.Dispatch<React.SetStateAction<Filter | undefined>>;
+  active: string | null;
+  setActive: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-export function Genres({ filters, setFilter, type, setType }: Props) {
+export function Genres({
+  filters,
+  setFilter,
+  type,
+  setType,
+  active,
+  setActive,
+}: Props) {
   const [showMenu, setShowMenu] = useState(false);
-  const [active, setActive] = useState<string>("HBO");
 
   useEffect(() => {
+    // if (!searchParams) {
     const temp = filters?.filter((item) =>
       type?.label.includes("Featured")
         ? item.type === type?.type && featuredNames.includes(item.name)
         : item.type === type?.type
     );
-
+    console.log("rununinirnrinr", temp);
     if (temp) {
       setFilter(temp[0]);
-      setActive(temp[0].name);
+      setActive(temp[0]?.name);
     }
-  }, [type, filters, setFilter]);
+    // }
+  }, [filters, type, setActive, setFilter]);
+
+  useEffect(() => console.log(active, "active state"), [active]);
+
   return (
     <>
       <Wrapper>

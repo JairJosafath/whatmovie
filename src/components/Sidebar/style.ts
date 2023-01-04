@@ -69,11 +69,11 @@ export const Dimmed = styled.div<{ showNav: boolean; delayed: boolean }>`
   flex: ${({ showNav }) => (showNav ? 5 : 12)};
   backdrop-filter: ${({ showNav, theme }) =>
     showNav
-      ? "blur(17px) brightness(.5)"
+      ? "blur(2px) brightness(.5)"
       : "blur(0) brightness(.8)"
       ? theme.mode === "light"
-        ? " blur(17px) brightness(.5)"
-        : "blur(17px) brightness(.8)"
+        ? " blur(2px) brightness(.5)"
+        : "blur(2px) brightness(.8)"
       : null};
   opacity: ${({ showNav }) => (showNav ? 1 : 0)};
   transition: opacity 300ms ease;

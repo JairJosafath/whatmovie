@@ -40,7 +40,18 @@ export default function Titlebar({ setShowNav }: Props) {
           </div>
         </Left>
 
-        <Title onClick={() => nav("/")}>What Movie</Title>
+        <Title
+          onClick={() => {
+            nav("/");
+            window.scroll({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            });
+          }}
+        >
+          What Movie
+        </Title>
         <Right search={search}>
           <BsSearch onClick={() => setSearch(!search)} />
           {context?.darkMode ? (

@@ -5,7 +5,6 @@ import {
   Movie as MovieInterface,
   Show as ShowInterface,
 } from "../../types/types";
-import { shuffle } from "../../util/utilities";
 import { Wrapper, Content, Movie } from "./style";
 
 interface Props {
@@ -17,9 +16,9 @@ export default function ListGrid({ list }: Props) {
     <Wrapper>
       <Content>
         {list
-          ? list?.map((item: MovieInterface | ShowInterface | any) => (
+          ? list?.map((item: MovieInterface | ShowInterface | any, index) => (
               <Movie
-                key={`${item.id}-${item.type}`}
+                key={`${item.id}-${item.type}-${index}`}
                 onClick={() =>
                   nav(
                     item?.type === "movies"

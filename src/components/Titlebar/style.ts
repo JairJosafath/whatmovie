@@ -9,8 +9,8 @@ export const Wrapper = styled.div<{ solid: boolean; search: boolean }>`
   left: 0;
   z-index: 10;
   padding-top: 20px;
-  transition: background-color ${({ search }) => (!search ? "2s" : "300ms")}
-      ease,
+  transition: background-color
+      ${({ search, solid }) => (!search && !solid ? "1s" : "300ms")} ease,
     color 300ms ease;
   backdrop-filter: blur(1.5rem) opacity(0.83)
     ${({ theme }) =>
