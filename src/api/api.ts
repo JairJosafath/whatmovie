@@ -1,6 +1,8 @@
-export const key = "b1b2759638dee8b830bb70c97e34f3dd";
+export const gKey = "AIzaSyDyStfr1VGm391RX3xvEq1ZFduOqRfPRgQ";
+export const gapiId = "30591cc01670747a7";
+export const gsource = "https://customsearch.googleapis.com/customsearch/v1";
 export const source = "https://api.themoviedb.org/3";
-
+export const key = "b1b2759638dee8b830bb70c97e34f3dd";
 export const img_base_url = "http://image.tmdb.org/t/p/";
 export const backdrop_size = {
   mobile: "w300",

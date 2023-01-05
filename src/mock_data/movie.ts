@@ -3133,3 +3133,971 @@ export const credits = {
     },
   ],
 };
+
+export const similarMovies = {
+  page: 1,
+  results: [
+    {
+      adult: false,
+      backdrop_path: null,
+      genre_ids: [28],
+      id: 106912,
+      original_language: "en",
+      original_title: "Darna! Ang Pagbabalik",
+      overview:
+        "Valentina, Darna's snake-haired arch enemy, is trying to take over the Phillipines through subliminal messages on religious TV shows. Darna has her own problems, however, as she has lost her magic pearl and with it the ability to transform into her scantily clad super self. Trapped as her alter-ego, the plucky reporter Narda, she must try to regain the pearl and foil Valentina's plans.",
+      release_date: "1994-05-09",
+      poster_path: null,
+      popularity: 1.012564,
+      title: "Darna: The Return",
+      video: false,
+      vote_average: 0,
+      vote_count: 0,
+    },
+  ],
+  total_pages: 9,
+  total_results: 168,
+};
+
+export const similarmoviesv2 = {
+  page: 1,
+  results: [
+    {
+      adult: false,
+      backdrop_path: "/35tBkTTIOjsrngPiDrqCz7NpKYK.jpg",
+      genre_ids: [28, 35, 80],
+      id: 306,
+      original_language: "en",
+      original_title: "Beverly Hills Cop III",
+      overview:
+        "Back in sunny southern California and on the trail of two murderers, Axel Foley again teams up with LA cop Billy Rosewood. Soon, they discover that an amusement park is being used as a front for a massive counterfeiting ring – and it's run by the same gang that shot Billy's boss.",
+      popularity: 22.056,
+      poster_path: "/7vIpCkgGEfk5LZwm78nMxswLJRH.jpg",
+      release_date: "1994-05-24",
+      title: "Beverly Hills Cop III",
+      video: false,
+      vote_average: 5.867,
+      vote_count: 1465,
+    },
+    {
+      adult: false,
+      backdrop_path: "/x7fK0oOUX8Ks1B1lZsACmCXUybI.jpg",
+      genre_ids: [28, 14, 9648, 80],
+      id: 314,
+      original_language: "en",
+      original_title: "Catwoman",
+      overview:
+        "A shy woman, endowed with the speed, reflexes, and senses of a cat, walks a thin line between criminal and hero, even as a detective doggedly pursues her, fascinated by both of her personas",
+      popularity: 25.694,
+      poster_path: "/pvnPgukFyEKgCzyOxyLiwyZ8T1C.jpg",
+      release_date: "2004-07-22",
+      title: "Catwoman",
+      video: false,
+      vote_average: 4.595,
+      vote_count: 2918,
+    },
+    {
+      adult: false,
+      backdrop_path: "/ah9hRJhdMMLkntNDIatKwncNJra.jpg",
+      genre_ids: [53, 80, 18, 9648],
+      id: 322,
+      original_language: "en",
+      original_title: "Mystic River",
+      overview:
+        "The lives of three men who were childhood friends are shattered when one of them has a family tragedy.",
+      popularity: 28.983,
+      poster_path: "/e2VNohx5jb7I6HUamCuGhKvzXDR.jpg",
+      release_date: "2003-01-01",
+      title: "Mystic River",
+      video: false,
+      vote_average: 7.747,
+      vote_count: 5552,
+    },
+    {
+      adult: false,
+      backdrop_path: "/bAG05yQkT56yFuLAETr12UfK05y.jpg",
+      genre_ids: [28, 80, 53, 27],
+      id: 326,
+      original_language: "en",
+      original_title: "Snakes on a Plane",
+      overview:
+        "America is on the search for the murderer Eddie Kim. Sean Jones must fly to L.A. to testify in a hearing against Kim. Accompanied by FBI agent Neville Flynn, the flight receives some unexpected visitors.",
+      popularity: 19.618,
+      poster_path: "/9wqWQ5rXQG6daMpowqwadGjI768.jpg",
+      release_date: "2006-08-17",
+      title: "Snakes on a Plane",
+      video: false,
+      vote_average: 5.386,
+      vote_count: 1479,
+    },
+    {
+      adult: false,
+      backdrop_path: "/sWn488xLGp9SrPjZYuaIAaZE0dF.jpg",
+      genre_ids: [18],
+      id: 334,
+      original_language: "en",
+      original_title: "Magnolia",
+      overview:
+        "An epic mosaic of many interrelated characters in search of happiness, forgiveness, and meaning in the San Fernando Valley.",
+      popularity: 20.749,
+      poster_path: "/uq2u8HgtLFJkjNq2kHb2jvipIPT.jpg",
+      release_date: "1999-12-10",
+      title: "Magnolia",
+      video: false,
+      vote_average: 7.7,
+      vote_count: 2992,
+    },
+    {
+      adult: false,
+      backdrop_path: "/h31SOVlekuHXsMWVGxI8nPPfY82.jpg",
+      genre_ids: [18, 37],
+      id: 335,
+      original_language: "it",
+      original_title: "C'era una volta il West",
+      overview:
+        "As the railroad builders advance unstoppably through the Arizona desert on their way to the sea, Jill arrives in the small town of Flagstone with the intention of starting a new life.",
+      popularity: 29.508,
+      poster_path: "/qbYgqOczabWNn2XKwgMtVrntD6P.jpg",
+      release_date: "1968-12-21",
+      title: "Once Upon a Time in the West",
+      video: false,
+      vote_average: 8.303,
+      vote_count: 3625,
+    },
+    {
+      adult: false,
+      backdrop_path: "/3WP0RObZ2t7ShHfqQpKPljF9B22.jpg",
+      genre_ids: [28, 14],
+      id: 364,
+      original_language: "en",
+      original_title: "Batman Returns",
+      overview:
+        "While Batman deals with a deformed man calling himself the Penguin, an employee of a corrupt businessman transforms into the Catwoman.",
+      popularity: 32.442,
+      poster_path: "/jKBjeXM7iBBV9UkUcOXx3m7FSHY.jpg",
+      release_date: "1992-06-19",
+      title: "Batman Returns",
+      video: false,
+      vote_average: 6.895,
+      vote_count: 5586,
+    },
+    {
+      adult: false,
+      backdrop_path: "/mrfbeWcjgSaZ9NEb0xJMR9xzSeB.jpg",
+      genre_ids: [18],
+      id: 380,
+      original_language: "en",
+      original_title: "Rain Man",
+      overview:
+        "Selfish yuppie Charlie Babbitt's father left a fortune to his savant brother Raymond and a pittance to Charlie; they travel cross-country.",
+      popularity: 27.145,
+      poster_path: "/iTNHwO896WKkaoPtpMMS74d8VNi.jpg",
+      release_date: "1988-12-11",
+      title: "Rain Man",
+      video: false,
+      vote_average: 7.759,
+      vote_count: 5410,
+    },
+    {
+      adult: false,
+      backdrop_path: "/70EtzaGfO2d8X5n8SLI4s61KuJh.jpg",
+      genre_ids: [28, 80, 53],
+      id: 393,
+      original_language: "en",
+      original_title: "Kill Bill: Vol. 2",
+      overview:
+        "The Bride unwaveringly continues on her roaring rampage of revenge against the band of assassins who had tried to kill her and her unborn child. She visits each of her former associates one-by-one, checking off the victims on her Death List Five until there's nothing left to do … but kill Bill.",
+      popularity: 35.69,
+      poster_path: "/2yhg0mZQMhDyvUQ4rG1IZ4oIA8L.jpg",
+      release_date: "2004-04-16",
+      title: "Kill Bill: Vol. 2",
+      video: false,
+      vote_average: 7.876,
+      vote_count: 12268,
+    },
+    {
+      adult: false,
+      backdrop_path: "/tuDhEdza074bA497bO9WFEPs6O6.jpg",
+      genre_ids: [12, 10751, 14],
+      id: 411,
+      original_language: "en",
+      original_title:
+        "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+      overview:
+        "Siblings Lucy, Edmund, Susan and Peter step through a magical wardrobe and find the land of Narnia. There, they discover a charming, once peaceful kingdom that has been plunged into eternal winter by the evil White Witch, Jadis. Aided by the wise and magnificent lion, Aslan, the children lead Narnia into a spectacular, climactic battle to be free of the Witch's glacial powers forever.",
+      popularity: 3372.877,
+      poster_path: "/iREd0rNCjYdf5Ar0vfaW32yrkm.jpg",
+      release_date: "2005-12-07",
+      title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+      video: false,
+      vote_average: 7.107,
+      vote_count: 9088,
+    },
+    {
+      adult: false,
+      backdrop_path: "/snlu32RmjldF9b068UURJg8sQtn.jpg",
+      genre_ids: [28, 80, 14],
+      id: 414,
+      original_language: "en",
+      original_title: "Batman Forever",
+      overview:
+        "Batman must battle a disfigured district attorney and a disgruntled former employee with help from an amorous psychologist and a young circus acrobat.",
+      popularity: 27.361,
+      poster_path: "/mzzNBVwTiiY94xAXDMWJpNPW2US.jpg",
+      release_date: "1995-06-16",
+      title: "Batman Forever",
+      video: false,
+      vote_average: 5.4,
+      vote_count: 4515,
+    },
+    {
+      adult: false,
+      backdrop_path: "/m4UT6yKXhXgbzxpeV35L4jLoJoP.jpg",
+      genre_ids: [28, 878],
+      id: 415,
+      original_language: "en",
+      original_title: "Batman & Robin",
+      overview:
+        "Batman and Robin deal with relationship issues while preventing Mr. Freeze and Poison Ivy from attacking Gotham City.",
+      popularity: 30.76,
+      poster_path: "/cGRDufDDSrFrv7VI4YnmWnslne0.jpg",
+      release_date: "1997-06-20",
+      title: "Batman & Robin",
+      video: false,
+      vote_average: 4.322,
+      vote_count: 4374,
+    },
+    {
+      adult: false,
+      backdrop_path: "/zb6fM1CX41D9rF9hdgclu0peUmy.jpg",
+      genre_ids: [18, 36, 10752],
+      id: 424,
+      original_language: "en",
+      original_title: "Schindler's List",
+      overview:
+        "The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis while they worked as slaves in his factory during World War II.",
+      popularity: 61.894,
+      poster_path: "/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+      release_date: "1993-12-15",
+      title: "Schindler's List",
+      video: false,
+      vote_average: 8.566,
+      vote_count: 13625,
+    },
+    {
+      adult: false,
+      backdrop_path: "/a9ykRAWtQnI3SsZDfh8sCJo5cWI.jpg",
+      genre_ids: [16, 35, 10751, 12],
+      id: 425,
+      original_language: "en",
+      original_title: "Ice Age",
+      overview:
+        "With the impending ice age almost upon them, a mismatched trio of prehistoric critters – Manny the woolly mammoth, Diego the saber-toothed tiger and Sid the giant sloth – find an orphaned infant and decide to return it to its human parents. Along the way, the unlikely allies become friends but, when enemies attack, their quest takes on far nobler aims.",
+      popularity: 123.571,
+      poster_path: "/gLhHHZUzeseRXShoDyC4VqLgsNv.jpg",
+      release_date: "2002-03-10",
+      title: "Ice Age",
+      video: false,
+      vote_average: 7.337,
+      vote_count: 11625,
+    },
+    {
+      adult: false,
+      backdrop_path: "/oW5I6bexwnTNAS1mMVTfrGF3WZS.jpg",
+      genre_ids: [18],
+      id: 1164,
+      original_language: "en",
+      original_title: "Babel",
+      overview:
+        "In Babel, a tragic incident involving an American couple in Morocco sparks a chain of events for four families in different countries throughout the world. In the struggle to overcome isolation, fear, and displacement, each character discovers that it is family that ultimately provides solace. In the remote sands of the Moroccan desert, a rifle shot rings out  detonating a chain of events that will link an American tourist couples frantic struggle to survive, two Moroccan boys involved in an accidental crime, a nanny illegally crossing into Mexico with two American children and a Japanese teen rebel whose father is sought by the police in Tokyo. Separated by clashing cultures and sprawling distances, each of these four disparate groups of people are nevertheless hurtling towards a shared destiny of isolation and grief.",
+      popularity: 18.976,
+      poster_path: "/cDy5iZL2C01jiT5wDSE4jOvoT52.jpg",
+      release_date: "2006-09-08",
+      title: "Babel",
+      video: false,
+      vote_average: 7.168,
+      vote_count: 3205,
+    },
+    {
+      adult: false,
+      backdrop_path: "/wDr0XU8oLlZbtWgg5G25Gi4aEiE.jpg",
+      genre_ids: [18, 36],
+      id: 1165,
+      original_language: "en",
+      original_title: "The Queen",
+      overview:
+        "The Queen is an intimate behind the scenes glimpse at the interaction between HM Elizabeth II and Prime Minister Tony Blair during their struggle, following the death of Diana, to reach a compromise between what was a private tragedy for the Royal family and the public's demand for an overt display of mourning.",
+      popularity: 15.083,
+      poster_path: "/v08RH5Cx9EFAQMBWQuE5jHAgHYs.jpg",
+      release_date: "2006-09-15",
+      title: "The Queen",
+      video: false,
+      vote_average: 6.977,
+      vote_count: 1099,
+    },
+    {
+      adult: false,
+      backdrop_path: "/pbEkjhdfP7yuDcMB78YEZwgD4IN.jpg",
+      genre_ids: [18, 28, 80, 53],
+      id: 155,
+      original_language: "en",
+      original_title: "The Dark Knight",
+      overview:
+        "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+      popularity: 111.46,
+      poster_path: "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      release_date: "2008-07-14",
+      title: "The Dark Knight",
+      video: false,
+      vote_average: 8.506,
+      vote_count: 28888,
+    },
+    {
+      adult: false,
+      backdrop_path: "/5b5HrewiViLWEdMR4dmbd7ajQ8Q.jpg",
+      genre_ids: [53, 80],
+      id: 163,
+      original_language: "en",
+      original_title: "Ocean's Twelve",
+      overview:
+        "Danny Ocean reunites with his old flame and the rest of his merry band of thieves in carrying out three huge heists in Rome, Paris and Amsterdam – but a Europol agent is hot on their heels.",
+      popularity: 27.576,
+      poster_path: "/Ad55M8newGWemFWCsMAkxO3fDwl.jpg",
+      release_date: "2004-12-09",
+      title: "Ocean's Twelve",
+      video: false,
+      vote_average: 6.557,
+      vote_count: 6333,
+    },
+    {
+      adult: false,
+      backdrop_path: "/jXZ2tyJl44yKvh22I6ooQwU5rFM.jpg",
+      genre_ids: [35, 10749],
+      id: 164,
+      original_language: "en",
+      original_title: "Breakfast at Tiffany's",
+      overview:
+        "Holly Golightly is an eccentric New York City playgirl determined to marry a Brazilian millionaire. But when young writer Paul Varjak moves into her apartment building, her past threatens to get in their way.",
+      popularity: 19.901,
+      poster_path: "/79xm4gXw4l7A5D0XukUOJRocFYQ.jpg",
+      release_date: "1961-10-06",
+      title: "Breakfast at Tiffany's",
+      video: false,
+      vote_average: 7.691,
+      vote_count: 3679,
+    },
+    {
+      adult: false,
+      backdrop_path: "/iGkZLNllCJH9QqKIAIkg5NSy8I6.jpg",
+      genre_ids: [12, 35, 878],
+      id: 165,
+      original_language: "en",
+      original_title: "Back to the Future Part II",
+      overview:
+        "Marty and Doc are at it again in this wacky sequel to the 1985 blockbuster as the time-traveling duo head to 2015 to nip some McFly family woes in the bud. But things go awry thanks to bully Biff Tannen and a pesky sports almanac. In a last-ditch attempt to set things straight, Marty finds himself bound for 1955 and face to face with his teenage parents -- again.",
+      popularity: 31.541,
+      poster_path: "/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg",
+      release_date: "1989-11-22",
+      title: "Back to the Future Part II",
+      video: false,
+      vote_average: 7.7,
+      vote_count: 11148,
+    },
+  ],
+  total_pages: 500,
+  total_results: 10000,
+};
+
+export const hboclick = {
+  kind: "customsearch#search",
+  url: {
+    type: "application/json",
+    template:
+      "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json",
+  },
+  queries: {
+    request: [
+      {
+        title: "Google Custom Search - spidermanonhbomax",
+        totalResults: "53",
+        searchTerms: "spidermanonhbomax",
+        count: 10,
+        startIndex: 1,
+        inputEncoding: "utf8",
+        outputEncoding: "utf8",
+        safe: "off",
+        cx: "30591cc01670747a7",
+      },
+    ],
+    nextPage: [
+      {
+        title: "Google Custom Search - spidermanonhbomax",
+        totalResults: "53",
+        searchTerms: "spidermanonhbomax",
+        count: 10,
+        startIndex: 11,
+        inputEncoding: "utf8",
+        outputEncoding: "utf8",
+        safe: "off",
+        cx: "30591cc01670747a7",
+      },
+    ],
+  },
+  context: {
+    title: "learningGoogleApis",
+  },
+  searchInformation: {
+    searchTime: 0.264696,
+    formattedSearchTime: "0.26",
+    totalResults: "53",
+    formattedTotalResults: "53",
+  },
+  spelling: {
+    correctedQuery: "spiderman on hbomax",
+    htmlCorrectedQuery: "<b><i>spiderman on hbomax</i></b>",
+  },
+  items: [
+    {
+      kind: "customsearch#result",
+      title: "Watch Spider-Man: No Way Home (HBO) - Stream Movies | HBO Max",
+      htmlTitle:
+        "Watch Spider-Man: No Way Home (HBO) - Stream Movies | HBO Max",
+      link: "https://www.hbomax.com/aw/en/feature/urn:hbo:feature:GYqeASQeezEo8igEAAACK",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Stream Spider-Man: No Way Home (HBO) on HBO Max. Tom Holland, Zendaya and Benedict Cumberbatch star in this Spider-Man adventure, who this time faces his ...",
+      htmlSnippet:
+        "Stream Spider-Man: No Way Home (HBO) on HBO Max. Tom Holland, Zendaya and Benedict Cumberbatch star in this Spider-Man adventure, who this time faces his&nbsp;...",
+      cacheId: "8Nb6A60RmaAJ",
+      formattedUrl:
+        "https://www.hbomax.com/aw/.../urn:hbo:feature: GYqeASQeezEo8igEAAACK",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/aw/.../urn:hbo:feature: GYqeASQeezEo8igEAAACK",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQCmUc6TgxX79aTcJiqatUo0J1xPTGlT_u4Vyh4EzGmLHpJHVA5SPevKA",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "og:image":
+              "//hbomax-images.warnermediacdn.com/images/GYqeASQeezEo8igEAAACK/tile?size=640x360&partner=hbomaxcom&v=e401bd5c3bc4abe556081b53fd73f038&host=art-gallery.api.hbo.com&language=en-us",
+            "twitter:title":
+              "Watch Spider-Man: No Way Home (HBO) - Stream Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "Spider-Man: No Way Home (HBO)",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title":
+              "Watch Spider-Man: No Way Home (HBO) - Stream Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Stream Spider-Man: No Way Home (HBO) on HBO Max. Tom Holland, Zendaya and Benedict Cumberbatch star in this Spider-Man adventure, who this time faces his greatest villains, all at once, after Dr. Strange unintentionally opens a rift to the Multiverse upon helping the neighborhood's hero.",
+            "twitter:image":
+              "//hbomax-images.warnermediacdn.com/images/GYqeASQeezEo8igEAAACK/tile?size=640x360&partner=hbomaxcom&v=e401bd5c3bc4abe556081b53fd73f038&host=art-gallery.api.hbo.com&language=en-us",
+            "next-head-count": "41",
+            "twitter:image:alt": "Spider-Man: No Way Home (HBO)",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Stream Spider-Man: No Way Home (HBO) on HBO Max. Tom Holland, Zendaya and Benedict Cumberbatch star in this Spider-Man adventure, who this time faces his greatest villains, all at once, after Dr. Strange unintentionally opens a rift to the Multiverse upon helping the neighborhood's hero.",
+            "og:url":
+              "https://www.hbomax.com/aw/en/feature/urn:hbo:feature:GYqeASQeezEo8igEAAACK",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYqeASQeezEo8igEAAACK/tileburnedin?size=1280x720&partner=hbomaxcom&v=0c896976a1ce005ba63b48a2c83a48de&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch The Amazing Spider-Man (HBO) - Stream Movies | HBO Max",
+      htmlTitle: "Watch The Amazing Spider-Man (HBO) - Stream Movies | HBO Max",
+      link: "https://www.hbomax.com/tc/en/feature/urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Stream The Amazing Spider-Man (HBO) on HBO Max. After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a ...",
+      htmlSnippet:
+        "Stream The Amazing Spider-Man (HBO) on HBO Max. After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a&nbsp;...",
+      cacheId: "bvCXBOWWRJMJ",
+      formattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQyoMqeiD-soRtA8a8jLfJIXLBc3n0hew5h8O8nIb7LmxnWJdPkoK2oZdnd",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "og:image":
+              "//hbomax-images.warnermediacdn.com/images/GYGVHLA01LJyaogEAAAAd/tile?size=640x360&partner=hbomaxcom&v=fd9a24263311e657228f494e42194cb0&host=art-gallery.api.hbo.com&language=en-us",
+            "twitter:title":
+              "Watch The Amazing Spider-Man (HBO) - Stream Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "The Amazing Spider-Man (HBO)",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title":
+              "Watch The Amazing Spider-Man (HBO) - Stream Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Stream The Amazing Spider-Man (HBO) on HBO Max. After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the rampage of a mysterious reptilian foe.",
+            "twitter:image":
+              "//hbomax-images.warnermediacdn.com/images/GYGVHLA01LJyaogEAAAAd/tile?size=640x360&partner=hbomaxcom&v=fd9a24263311e657228f494e42194cb0&host=art-gallery.api.hbo.com&language=en-us",
+            "next-head-count": "42",
+            "twitter:image:alt": "The Amazing Spider-Man (HBO)",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Stream The Amazing Spider-Man (HBO) on HBO Max. After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the rampage of a mysterious reptilian foe.",
+            "og:url":
+              "https://www.hbomax.com/tc/en/feature/urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYGVHLA01LJyaogEAAAAd/tile?size=640x360&partner=hbomaxcom&v=fd9a24263311e657228f494e42194cb0&host=art-gallery.api.hbo.com&language=en-us",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch Spider-Man (HBO) | Movies | HBO Max",
+      htmlTitle: "Watch Spider-Man (HBO) | Movies | HBO Max",
+      link: "https://www.hbomax.com/ad/en/feature/urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Watch Spider-Man (HBO) When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains spider-like ...",
+      htmlSnippet:
+        "Watch Spider-Man (HBO) When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains spider-like&nbsp;...",
+      cacheId: "WD1pTrXMIhwJ",
+      formattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRNZQ-NLjsWo7ARLpx_FpuqWYs8pxfZaSxx4OOrMrnt9Uw8hS88dHPak2v8",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "twitter:title": "Watch Spider-Man (HBO) | Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "Spider-Man (HBO)",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title": "Watch Spider-Man (HBO) | Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Watch Spider-Man (HBO)  When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
+            "next-head-count": "41",
+            "twitter:image:alt": "Spider-Man (HBO)",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Watch Spider-Man (HBO)  When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
+            "og:url":
+              "https://www.hbomax.com/ad/en/feature/urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYeg4RQeJUMINtwEAAAHk/tileburnedin?size=1280x720&partner=hbomaxcom&v=adb737e6fe62cf76e6e48973c853fe7c&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch Spider-Man: Homecoming | Movies | HBO Max",
+      htmlTitle: "Watch Spider-Man: Homecoming | Movies | HBO Max",
+      link: "https://www.hbomax.com/ad/en/feature/urn:hbo:feature:GYU1jsgDeSgs7swEAAACQ",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "A young Peter Parker/Spider-Man begins to navigate his newfound identity as the web-slinging superhero. Starring: Tom Holland, Michael Keaton, Robert Downey ...",
+      htmlSnippet:
+        "A young Peter Parker/Spider-Man begins to navigate his newfound identity as the web-slinging superhero. Starring: Tom Holland, Michael Keaton, Robert Downey&nbsp;...",
+      cacheId: "7vVUB-Xh2tUJ",
+      formattedUrl:
+        "https://www.hbomax.com/ad/.../urn:hbo:feature:GYU1jsgDeSgs7swEAAACQ",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/ad/.../urn:hbo:feature:GYU1jsgDeSgs7swEAAACQ",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRQ4nNG2t8iIxa7iV0W2c_QiivIe9kZ1WGgseKksve-l_Cq1B85sHF2SWKS",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "twitter:title": "Watch Spider-Man: Homecoming | Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "Spider-Man: Homecoming",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title": "Watch Spider-Man: Homecoming | Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Watch Spider-Man: Homecoming  A young Peter Parker/Spider-Man begins to navigate his newfound identity as the web-slinging superhero.",
+            "next-head-count": "41",
+            "twitter:image:alt": "Spider-Man: Homecoming",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Watch Spider-Man: Homecoming  A young Peter Parker/Spider-Man begins to navigate his newfound identity as the web-slinging superhero.",
+            "og:url":
+              "https://www.hbomax.com/ad/en/feature/urn:hbo:feature:GYU1jsgDeSgs7swEAAACQ",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYU1jsgDeSgs7swEAAACQ/tileburnedin?size=1280x720&partner=hbomaxcom&v=beb6d9a25d10e08edeafb4261263840a&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch Spider-Man (HBO) - Stream Movies | HBO Max",
+      htmlTitle: "Watch Spider-Man (HBO) - Stream Movies | HBO Max",
+      link: "https://www.hbomax.com/ag/en/feature/urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Stream Spider-Man (HBO) on HBO Max. When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains ...",
+      htmlSnippet:
+        "Stream Spider-Man (HBO) on HBO Max. When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains&nbsp;...",
+      cacheId: "ZATBACQYZlkJ",
+      formattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRNZQ-NLjsWo7ARLpx_FpuqWYs8pxfZaSxx4OOrMrnt9Uw8hS88dHPak2v8",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "og:image":
+              "//hbomax-images.warnermediacdn.com/images/GYeg4RQeJUMINtwEAAAHk/tile?size=640x360&partner=hbomaxcom&v=4c9139584e7e70e52dde797ee9a1c765&host=art-gallery.api.hbo.com&language=en-us",
+            "twitter:title": "Watch Spider-Man (HBO) - Stream Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "Spider-Man (HBO)",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title": "Watch Spider-Man (HBO) - Stream Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Stream Spider-Man (HBO) on HBO Max. When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
+            "twitter:image":
+              "//hbomax-images.warnermediacdn.com/images/GYeg4RQeJUMINtwEAAAHk/tile?size=640x360&partner=hbomaxcom&v=4c9139584e7e70e52dde797ee9a1c765&host=art-gallery.api.hbo.com&language=en-us",
+            "next-head-count": "41",
+            "twitter:image:alt": "Spider-Man (HBO)",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Stream Spider-Man (HBO) on HBO Max. When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student (Tobey Maguire) gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
+            "og:url":
+              "https://www.hbomax.com/ag/en/feature/urn:hbo:feature:GYeg4RQeJUMINtwEAAAHk",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYeg4RQeJUMINtwEAAAHk/tileburnedin?size=1280x720&partner=hbomaxcom&v=adb737e6fe62cf76e6e48973c853fe7c&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch Spider-Man 3 (HBO) - Stream Movies | HBO Max",
+      htmlTitle: "Watch Spider-Man 3 (HBO) - Stream Movies | HBO Max",
+      link: "https://www.hbomax.com/cw/en/feature/urn:hbo:feature:GYGa01wg3RKmulwEAAAGf",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Stream Spider-Man 3 (HBO) on HBO Max. When Spider-Man (Tobey Maguire) dons a mysterious black costume, his darker, more vengeful side starts to take control ...",
+      htmlSnippet:
+        "Stream Spider-Man 3 (HBO) on HBO Max. When Spider-Man (Tobey Maguire) dons a mysterious black costume, his darker, more vengeful side starts to take control&nbsp;...",
+      cacheId: "PsmL0iYTKvMJ",
+      formattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYGa01wg3RKmulwEAAAGf",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYGa01wg3RKmulwEAAAGf",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQblbE2f0FOMa1i2hzqv4ksfE622n3cwdZF2MSOWaQJNdX9PeuoUQteoyg",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "og:image":
+              "//hbomax-images.warnermediacdn.com/images/GYGa01wg3RKmulwEAAAGf/tile?size=640x360&partner=hbomaxcom&v=238c8e4137579239534b9f73d1a0fc4a&host=art-gallery.api.hbo.com&language=en-us",
+            "twitter:title":
+              "Watch Spider-Man 3 (HBO) - Stream Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "Spider-Man 3 (HBO)",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title": "Watch Spider-Man 3 (HBO) - Stream Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Stream Spider-Man 3 (HBO) on HBO Max. When Spider-Man (Tobey Maguire) dons a mysterious black costume, his darker, more vengeful side starts to take control of his double life and causes inner turmoil as he contends with new villains, temptations, and revenge.",
+            "twitter:image":
+              "//hbomax-images.warnermediacdn.com/images/GYGa01wg3RKmulwEAAAGf/tile?size=640x360&partner=hbomaxcom&v=238c8e4137579239534b9f73d1a0fc4a&host=art-gallery.api.hbo.com&language=en-us",
+            "next-head-count": "41",
+            "twitter:image:alt": "Spider-Man 3 (HBO)",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Stream Spider-Man 3 (HBO) on HBO Max. When Spider-Man (Tobey Maguire) dons a mysterious black costume, his darker, more vengeful side starts to take control of his double life and causes inner turmoil as he contends with new villains, temptations, and revenge.",
+            "og:url":
+              "https://www.hbomax.com/cw/en/feature/urn:hbo:feature:GYGa01wg3RKmulwEAAAGf",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYGa01wg3RKmulwEAAAGf/tileburnedin?size=1280x720&partner=hbomaxcom&v=05de77cecb3c96410f60caa23f72429e&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch The Amazing Spider-Man | Netflix",
+      htmlTitle: "Watch The Amazing Spider-Man | Netflix",
+      link: "https://www.netflix.com/ca/title/70208599",
+      displayLink: "www.netflix.com",
+      snippet:
+        "In this reboot of the hit superhero franchise, high schooler Peter Parker learns to wield his newfound powers while facing down arch-villain The Lizard.",
+      htmlSnippet:
+        "In this reboot of the hit superhero franchise, high schooler Peter Parker learns to wield his newfound powers while facing down arch-villain The Lizard.",
+      cacheId: "rO0Z9uAGAY0J",
+      formattedUrl: "https://www.netflix.com/ca/title/70208599",
+      htmlFormattedUrl: "https://www.netflix.com/ca/title/70208599",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOiL4o7kFFw0DgRSfaMiD2QjMW5VOahtPjOO37Edi8mHI6ggeBjbyxomY",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "og:image":
+              "https://occ-0-778-1722.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABTQuwFj4Jasbn6T64pO254QZZozuAst2y4xvu1-DsaJXy3XnYMtJKZfXKyN34j6GJ2MS2CzjqnVZ2WFN8OQ9I2nqkrEbG4D4guO2.jpg?r=225",
+            "twitter:card": "summary_large_image",
+            "al:ios:app_name": "Netflix",
+            "og:title": "Watch The Amazing Spider-Man | Netflix",
+            "al:android:package": "com.netflix.mediaclient",
+            "al:ios:url": "nflx://www.netflix.com/title/70208599?locale=en-CA",
+            "og:description":
+              "In this reboot of the hit superhero franchise, high schooler Peter Parker learns to wield his newfound powers while facing down arch-villain The Lizard.",
+            "al:ios:app_store_id": "363590051",
+            "al:android:url":
+              "nflx://www.netflix.com/title/70208599?locale=en-CA",
+            "twitter:site": "@netflix",
+            viewport:
+              "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0",
+            "og:url": "https://www.netflix.com/ca/title/70208599",
+            "al:android:app_name": "Netflix",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://occ-0-778-1722.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABTQuwFj4Jasbn6T64pO254QZZozuAst2y4xvu1-DsaJXy3XnYMtJKZfXKyN34j6GJ2MS2CzjqnVZ2WFN8OQ9I2nqkrEbG4D4guO2.jpg?r=225",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch The Amazing Spider-Man (HBO) | Movies | HBO Max",
+      htmlTitle: "Watch The Amazing Spider-Man (HBO) | Movies | HBO Max",
+      link: "https://www.hbomax.com/hu/en/feature/urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Watch The Amazing Spider-Man (HBO) After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a genetically ...",
+      htmlSnippet:
+        "Watch The Amazing Spider-Man (HBO) After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a genetically&nbsp;...",
+      cacheId: "2xDeO-sZmikJ",
+      formattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRmJf3e2gROJi2kl7MF_H46U0Y2TQXRZ2_r6FfBpLUyvCttRsGT0GKVR4U",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "twitter:title":
+              "Watch The Amazing Spider-Man (HBO) | Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "The Amazing Spider-Man (HBO)",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title": "Watch The Amazing Spider-Man (HBO) | Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Watch The Amazing Spider-Man (HBO)  After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the rampage of a mysterious reptilian foe.",
+            "next-head-count": "41",
+            "twitter:image:alt": "The Amazing Spider-Man (HBO)",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Watch The Amazing Spider-Man (HBO)  After Peter Parker, a teenager abandoned by his parents and raised by an aunt and uncle, is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the rampage of a mysterious reptilian foe.",
+            "og:url":
+              "https://www.hbomax.com/hu/en/feature/urn:hbo:feature:GYGVHLA01LJyaogEAAAAd",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYGVHLA01LJyaogEAAAAd/tileburnedin?size=1280x720&partner=hbomaxcom&v=495e392183b1c098d9daab1442d83c31&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch The Amazing Spider-Man 2 | Movies | HBO Max",
+      htmlTitle: "Watch The Amazing Spider-Man 2 | Movies | HBO Max",
+      link: "https://www.hbomax.com/si/en/feature/urn:hbo:feature:GYetqZwc89XGpCwEAAAAS",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Watch The Amazing Spider-Man 2 Peter Parker runs the gauntlet as the mysterious company Oscorp sends up a slew of supervillains against him, impacting on ...",
+      htmlSnippet:
+        "Watch The Amazing Spider-Man 2 Peter Parker runs the gauntlet as the mysterious company Oscorp sends up a slew of supervillains against him, impacting on&nbsp;...",
+      cacheId: "EJDIXwUYs5QJ",
+      formattedUrl:
+        "https://www.hbomax.com/si/.../urn:hbo:feature: GYetqZwc89XGpCwEAAAAS",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/si/.../urn:hbo:feature: GYetqZwc89XGpCwEAAAAS",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT-qlix2RSrQjxUG-Jkh-pprKsmbaC3ecaJ4ii9Iv3T1BHz9gghRsm1W4",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "twitter:title":
+              "Watch The Amazing Spider-Man 2 | Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "The Amazing Spider-Man 2",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title": "Watch The Amazing Spider-Man 2 | Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Watch The Amazing Spider-Man 2  Peter Parker runs the gauntlet as the mysterious company Oscorp sends up a slew of supervillains against him, impacting on his life.",
+            "next-head-count": "41",
+            "twitter:image:alt": "The Amazing Spider-Man 2",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Watch The Amazing Spider-Man 2  Peter Parker runs the gauntlet as the mysterious company Oscorp sends up a slew of supervillains against him, impacting on his life.",
+            "og:url":
+              "https://www.hbomax.com/si/en/feature/urn:hbo:feature:GYetqZwc89XGpCwEAAAAS",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYetqZwc89XGpCwEAAAAS/tileburnedin?size=1280x720&partner=hbomaxcom&v=d2a8154d23542262e2102e7d39974b81&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+    {
+      kind: "customsearch#result",
+      title: "Watch Spider-Man: Far from Home | Movies | HBO Max",
+      htmlTitle: "Watch Spider-Man: Far from Home | Movies | HBO Max",
+      link: "https://www.hbomax.com/ad/en/feature/urn:hbo:feature:GYnKrWwKqdsLCwwEAAAHU",
+      displayLink: "www.hbomax.com",
+      snippet:
+        "Watch Spider-Man: Far from Home In this installment of the MCU starring Jake Gyllenhaal and Tom Holland, the world has changed forever and Peter Parker ...",
+      htmlSnippet:
+        "Watch Spider-Man: Far from Home In this installment of the MCU starring Jake Gyllenhaal and Tom Holland, the world has changed forever and Peter Parker&nbsp;...",
+      cacheId: "S20xAcdEQU0J",
+      formattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature: GYnKrWwKqdsLCwwEAAAHU",
+      htmlFormattedUrl:
+        "https://www.hbomax.com/.../urn:hbo:feature: GYnKrWwKqdsLCwwEAAAHU",
+      pagemap: {
+        cse_thumbnail: [
+          {
+            src: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ-Pw1CmfqHCqBItrK2LSHo3bi4lNxCR2XEGD5xZ5ZHpDloiUT-Bz1X-dQ",
+            width: "300",
+            height: "168",
+          },
+        ],
+        metatags: [
+          {
+            "twitter:title":
+              "Watch Spider-Man: Far from Home | Movies | HBO Max",
+            "og:image:width": "640",
+            "og:image:alt": "Spider-Man: Far from Home",
+            "twitter:card": "summary_large_image",
+            "og:site_name": "HBO Max",
+            "og:title": "Watch Spider-Man: Far from Home | Movies | HBO Max",
+            "og:image:height": "320",
+            "og:description":
+              "Watch Spider-Man: Far from Home  In this installment of the MCU starring Jake Gyllenhaal and Tom Holland, the world has changed forever and Peter Parker carries the legacy of Tony Stark. In an attempt to escape his heroic responsibilities, Peter decides to join his friends on a vacation in Europe, but his plans go awry when he reluctantly agrees to help Nick Fury save the world.",
+            "next-head-count": "41",
+            "twitter:image:alt": "Spider-Man: Far from Home",
+            "twitter:site": "@hbomax",
+            viewport:
+              "width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no",
+            "twitter:description":
+              "Watch Spider-Man: Far from Home  In this installment of the MCU starring Jake Gyllenhaal and Tom Holland, the world has changed forever and Peter Parker carries the legacy of Tony Stark. In an attempt to escape his heroic responsibilities, Peter decides to join his friends on a vacation in Europe, but his plans go awry when he reluctantly agrees to help Nick Fury save the world.",
+            "og:url":
+              "https://www.hbomax.com/ad/en/feature/urn:hbo:feature:GYnKrWwKqdsLCwwEAAAHU",
+          },
+        ],
+        cse_image: [
+          {
+            src: "https://hbomax-images.warnermediacdn.com/images/GYnKrWwKqdsLCwwEAAAHU/tileburnedin?size=1280x720&partner=hbomaxcom&v=43cad01d42a22d7644a0a2d20d0337b3&host=art-gallery.api.hbo.com&language=en-us&w=1280",
+          },
+        ],
+      },
+    },
+  ],
+};

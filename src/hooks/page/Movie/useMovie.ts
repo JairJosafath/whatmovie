@@ -7,7 +7,6 @@ export function useMovie() {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [movieId, setMovieId] = useState("");
-  const [getProviders, setGetProviders] = useState("");
 
   const {
     setLink: setMovieLink,
@@ -17,27 +16,43 @@ export function useMovie() {
   } = useFetch();
 
   useEffect(() => {
-    // console.log("hero set url");
-    // if (movieId) setMovieLink(movies.getMovie(movieId).movie);
+    setLoading(true);
+    if (movieId) setMovieLink(movies.getMovie(movieId).movie);
   }, [setMovieLink, movieId]);
 
   const {
-    setLink: setProviderLink,
-    data: providers,
-    loading: loadingProvider,
-    isErr: errorProvider,
+    setLink: setSimilarLink,
+    data: similar,
+    loading: loadingSimilar,
+    isErr: errorSimilar,
   } = useFetch();
 
-  useEffect(
-    () =>
-      movieId ? setProviderLink(movies.getMovie(movieId).providers) : undefined,
-    [movieId, setProviderLink]
-  );
+  useEffect(() => {
+    setLoading(true);
+    if (movieId) setSimilarLink(movies.getMovie(movieId).similar);
+  }, [movieId, setSimilarLink]);
+  const {
+    setLink: setCreditsLink,
+    data: credits,
+    loading: loadingCredits,
+    isErr: errorCredits,
+  } = useFetch();
+
+  useEffect(() => {
+    setLoading(true);
+    if (movieId) setCreditsLink(movies.getMovie(movieId).credits);
+  }, [movieId, setCreditsLink]);
+
+  useEffect(() => {
+    if (movie && similar && credits) {
+      setLoading(false);
+    }
+  }, [movie, similar, credits]);
   return {
     movie,
     setMovieId,
-    providers,
-    setGetProviders,
+    similar,
+    credits,
     loading,
     isError,
   };

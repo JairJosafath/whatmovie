@@ -10,19 +10,19 @@ export const listItems = [
   { label: "Home", path: "/" },
   {
     label: "Shows",
-    path: "?type2=none&name=none&type=shows",
+    path: "/?type2=none&name=none&type=shows",
   },
-  { label: "Movies", path: "?type2=none&name=none&type=movies" },
-  { label: "Popular", path: "?type2=featured&name=Popular&type=movies" },
-  { label: "Top Rated", path: "?type2=featured&name=Top%20Rated&type=movies" },
-  { label: "Upcoming", path: "?type2=featured&name=Upcoming&type=movies" },
+  { label: "Movies", path: "/?type2=none&name=none&type=movies" },
+  { label: "Popular", path: "/?type2=featured&name=Popular&type=movies" },
+  { label: "Top Rated", path: "/?type2=featured&name=Top%20Rated&type=movies" },
+  { label: "Upcoming", path: "/?type2=featured&name=Upcoming&type=movies" },
   {
     label: "Now Playing",
-    path: "?type2=featured&name=Now%20Playing&type=movies",
+    path: "/?type2=featured&name=Now%20Playing&type=movies",
   },
   {
     label: "Airing Today",
-    path: "?type2=featured&name=Airing%20Today&type=shows",
+    path: "/?type2=featured&name=Airing%20Today&type=shows",
   },
   // { label: "On the Air", path: "?type2=featured&name=ontheair&type=shows" },
 ];

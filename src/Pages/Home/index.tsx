@@ -13,7 +13,6 @@ export const options = [
   { label: "Shows by Genre", type: "shows", type2: "genre" },
   { label: "Featured Movies", type: "movies", type2: "featured" },
   { label: "Featured Shows", type: "shows", type2: "featured" },
-  // { label: "By Company", type: "companies", type2: "companies" },
 ];
 export function Home() {
   const {
