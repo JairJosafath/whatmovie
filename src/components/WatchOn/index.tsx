@@ -13,10 +13,10 @@ const services = [
 ];
 
 interface Props {
-  movieName: string;
+  name: string;
 }
 
-export default function WatchOn({ movieName }: Props) {
+export default function WatchOn({ name }: Props) {
   // const [searchUrl, setSearchUrl] = useState("");
   const { loading, isErr, data, setLink } = useFetch();
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function WatchOn({ movieName }: Props) {
     logo: string;
     query: string;
   }) {
-    const temp = `watch ${movieName} on ${service.label}`.replaceAll(",", " ");
+    const temp = `watch ${name} on ${service.label}`.replaceAll(",", " ");
     console.log(temp);
     setLink(
       `${gsource}?cx=${gapiId}&key=${gKey}&q=${new URLSearchParams(temp)}`

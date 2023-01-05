@@ -43,7 +43,7 @@ export const Content = styled.div`
   }
 `;
 
-export const Info = styled.div`
+export const Info = styled.div<{ showMenu?: boolean }>`
   width: 70%;
   height: 290px;
   display: flex;
@@ -55,12 +55,14 @@ export const Info = styled.div`
   padding: 7px;
   cursor: default;
   button {
-    width: 120px;
+    min-width: 120px;
+    max-width: 130px;
     height: 50px;
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.color};
     border: 2px solid ${({ theme }) => theme.color};
     border-radius: 3rem;
+    white-space: nowrap;
     cursor: pointer;
     transition: transform 150ms ease;
     :hover {
@@ -82,7 +84,49 @@ export const Info = styled.div`
     }
     button {
       width: 90px;
+      max-width: 100px;
       height: 40px;
+    }
+    ul {
+      position: relative;
+      top: 95%;
+      display: block;
+      visibility: ${({ showMenu }) => (showMenu ? "show" : "hidden")};
+      opacity: ${({ showMenu }) => (showMenu ? 1 : 0)};
+      position: absolute;
+      border-radius: 0.5rem;
+      background-color: ${({ theme }) =>
+        theme.mode === "dark" ? theme.background : "rgb(30,30,30)"};
+      width: 150px;
+      box-shadow: ${({ theme }) =>
+        theme.mode === "dark"
+          ? `0px 8px 16px 0px ${theme.colorFaded}`
+          : `0px 0 0 0px ${theme.colorFaded}`};
+      padding: 12px 0;
+      z-index: 1;
+      list-style: none;
+      text-align: center;
+      transition: visibility 300ms, opacity 200ms;
+      li {
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: opacity 300ms;
+        :hover {
+          background-color: ${({ theme }) => theme.color};
+          color: ${({ theme }) => theme.background};
+        }
+        :active {
+          opacity: 0.7;
+        }
+      }
+      li:nth-child(2n) {
+        background-color: ${({ theme }) =>
+          theme.mode === "dark" ? "rgb(180,180,180)" : "rgb(20,20,20)"};
+        :hover {
+          background-color: ${({ theme }) => theme.color};
+          color: ${({ theme }) => theme.background};
+        }
+      }
     }
   }
 `;

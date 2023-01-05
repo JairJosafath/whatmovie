@@ -18,7 +18,7 @@ export default function Staff({ credits }: Props) {
               ?.sort((a: any, b: any) => b?.popularity - a?.popularity)
               .slice(0, 5)
               .map((member) => (
-                <li>
+                <li key={member.cast_id}>
                   {member.profile_path ? (
                     <img
                       src={`${img_base_url}${poster_size.sm}${member.profile_path}`}
@@ -33,7 +33,7 @@ export default function Staff({ credits }: Props) {
           <h2>Other Cast</h2>
           <ul className={"other-cast"}>
             {credits?.cast?.slice(5, 17).map((member) => (
-              <li>
+              <li key={member.cast_id}>
                 <h4>character: {member.character}</h4>
                 <p>{member.name}</p>
               </li>

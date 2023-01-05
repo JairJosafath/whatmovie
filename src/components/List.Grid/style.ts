@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div<{ searchmode: boolean }>`
   position: relative;
   top: ${({ searchmode }) => (!searchmode ? "500px" : "0")};
+  h2 {
+    margin-left: 60px;
+  }
   @media (max-width: 760px) {
     top: 420px;
   }

@@ -79,3 +79,36 @@ export interface Result {
   vote_average?: number;
   vote_count?: number;
 }
+
+export interface Crew {
+  department?: Department;
+  job?: Job;
+  credit_id?: string;
+  adult?: boolean;
+  gender?: number;
+  id?: number;
+  known_for_department?: Department;
+  name?: string;
+  original_name?: string;
+  popularity?: number;
+  profile_path?: null | string;
+  order?: number;
+  character?: string;
+}
+
+export enum Department {
+  Acting = "Acting",
+  Camera = "Camera",
+  Creator = "Creator",
+  Directing = "Directing",
+  Editing = "Editing",
+  Production = "Production",
+  Writing = "Writing",
+}
+
+export enum Job {
+  Director = "Director",
+  DirectorOfPhotography = "Director of Photography",
+  Editor = "Editor",
+  Writer = "Writer",
+}

@@ -75,8 +75,8 @@ export const shows = {
       providers: `https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=${key}&language=en-US`,
     };
   },
-  getEpisode: (id: String, season: number, episode: number) =>
-    `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode}?api_key=${key}&language=en-US`,
+  getSeason: (id: String, seasonId: string) =>
+    `https://api.themoviedb.org/3/tv/${id}/season/${seasonId}?api_key=${key}&language=en-US`,
 };
 
 export const people = {
