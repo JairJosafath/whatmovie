@@ -19,7 +19,25 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   ul {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: scroll;
     display: flex;
+    list-style: none;
+    gap: 30px;
+    white-space: nowrap;
+
+    li {
+      display: grid;
+      text-align: center;
+      cursor: pointer;
+      :hover {
+        filter: brightness(1.2);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  img {
+    margin: 0 auto;
   }
 `;

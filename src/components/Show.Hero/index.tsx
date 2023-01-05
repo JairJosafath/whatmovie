@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { backdrop_size, img_base_url } from "../../api/api";
 import { Season, Show } from "../../types/show";
-import { Content, Image, Info, Title, Wrapper } from "../Home.Hero/style";
-import { Video } from "../Movie.Hero/style";
+import { Content, Image, Info, Title, Wrapper } from "./style";
+import { List } from "./style";
 
 interface Props {
   show: Show | undefined;
@@ -35,31 +35,28 @@ export default function ShowHero({
     <>
       <Wrapper>
         <Content>
-          {false ? (
-            <Video>video</Video>
-          ) : (
-            <Image>
-              <source
-                srcSet={`${img_base_url}${backdrop_size.desktop}/${
-                  hero?.poster_path
-                } ${backdrop_size.desktop.substring(1)}w`}
-                media={`(min-width: 1200px)`}
-              />
-              <source
-                srcSet={`${img_base_url}${backdrop_size.tablet}/${
-                  hero?.poster_path
-                } ${backdrop_size.tablet.substring(1)}w`}
-                media={`(min-width: 300px)`}
-              />
-              <source
-                srcSet={`${img_base_url}${backdrop_size.mobile}/${
-                  hero?.poster_path
-                } ${backdrop_size.mobile.substring(1)}w`}
-                media={`(max-width: 300px)`}
-              />
-              <img src={""} alt="banner" />
-            </Image>
-          )}
+          (
+          <Image>
+            <source
+              srcSet={`${img_base_url}${backdrop_size.desktop}/${
+                hero?.poster_path
+              } ${backdrop_size.desktop.substring(1)}w`}
+              media={`(min-width: 1200px)`}
+            />
+            <source
+              srcSet={`${img_base_url}${backdrop_size.tablet}/${
+                hero?.poster_path
+              } ${backdrop_size.tablet.substring(1)}w`}
+              media={`(min-width: 300px)`}
+            />
+            <source
+              srcSet={`${img_base_url}${backdrop_size.mobile}/${
+                hero?.poster_path
+              } ${backdrop_size.mobile.substring(1)}w`}
+              media={`(max-width: 300px)`}
+            />
+            <img src={""} alt="banner" />
+          </Image>
           <div className="grad-cover" />
           <Info showMenu={showMenu}>
             <Title>
@@ -82,7 +79,7 @@ export default function ShowHero({
             <button onClick={() => setShowMenu(!showMenu)}>
               {season?.name}
             </button>
-            <ul>
+            <List showMenu={showMenu}>
               {show?.seasons?.map((season: any, index) => (
                 <li
                   key={season?._id}
@@ -94,7 +91,7 @@ export default function ShowHero({
                   {season?.name}
                 </li>
               ))}
-            </ul>
+            </List>
           </Info>
         </Content>
       </Wrapper>

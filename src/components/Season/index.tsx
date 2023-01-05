@@ -17,7 +17,7 @@ export default function Season({ season }: Props) {
               <li key={index}>
                 <h3>{episode.name}</h3>
                 <img
-                  src={`${img_base_url}${poster_size.sm}${episode?.still_path}`}
+                  src={`${img_base_url}${poster_size.md}${episode?.still_path}`}
                   alt="episode poste"
                 />
               </li>
