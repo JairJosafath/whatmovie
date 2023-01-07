@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MovieHero from "../../components/Movie.Hero";
 import Similar from "../../components/Movie.Similar";
-import Staff from "../../components/Staff";
+import Staff from "../../components/Movie.Staff";
 import WatchOn from "../../components/WatchOn";
 import { useMovie } from "../../hooks/page/Movie/useMovie";
 
@@ -21,11 +21,6 @@ export default function Movie() {
       {!loading ? (
         <>
           <MovieHero movie={movie} />
-          <WatchOn
-            name={
-              movie ? (movie?.title ? movie?.title : movie?.original_title) : ""
-            }
-          />
           <Staff credits={credits} />
           <Similar similar={similar} />
         </>

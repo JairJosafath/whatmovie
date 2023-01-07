@@ -4,7 +4,7 @@ import { Wrapper, Content, TopBar } from "./style";
 
 interface Props {
   setSearchmode: React.Dispatch<React.SetStateAction<boolean>>;
-  query: string;
+  query: { type: "movies" | "shows" | undefined; query: string } | undefined;
 }
 export default function SearchMode({ setSearchmode, query }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,7 +19,7 @@ export default function SearchMode({ setSearchmode, query }: Props) {
             setSearchmode(false);
           }}
         />
-        <TopBar>{query} Results</TopBar>
+        <TopBar>{query?.query} Results</TopBar>
       </Content>
     </Wrapper>
   );

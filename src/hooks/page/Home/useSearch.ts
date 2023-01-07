@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { movies } from "../../../api/api";
+import { movies, shows } from "../../../api/api";
+import { movies as moviesMock } from "../../../mock_data/movie";
+import { shows as showsMock } from "../../../mock_data/shows";
 import { useFetch } from "../../useFetch";
 
 export function useSearch() {
   const [results, setResults] = useState<any>();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<
+    { query: string; type: "movies" | "shows" | undefined } | undefined
+  >({ query: "", type: "movies" });
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const {
@@ -15,10 +19,18 @@ export function useSearch() {
   } = useFetch();
   useEffect(() => {
     if (query) {
-      console.log("queriying db");
+      // console.log("queriying db");
       setLoading(true);
-      setLink(movies.search(query));
-      return () => setLink("");
+
+      if (query?.type === "movies") {
+        // console.log(" mock queryy on movies");
+        setLink(movies.search(query?.query));
+        // setResults(moviesMock);
+      } else if (query?.type === "shows") {
+        // console.log(" mock queryy on shows");
+        setLink(shows.search(query?.query));
+        // setResults(showsMock);
+      }
     }
   }, [query, setLink]);
   useEffect(() => {

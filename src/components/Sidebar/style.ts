@@ -62,9 +62,26 @@ export const Bar = styled.div<{ showNav: boolean }>`
       padding-left: 20px;
       border: none;
     }
+    @media (min-width: 900px) {
+      font-size: x-large;
+      width: 100%;
+    }
+  }
+  @media (min-width: 1200px) {
+    flex: ${({ showNav }) => (showNav ? 1.5 : 0)};
+
+    width: 100%;
+  }
+  @media (max-width: 1000px) {
+    flex: ${({ showNav }) => (showNav ? 2 : 0)};
+    p {
+      font-size: large;
+      border-bottom: 1px solid ${({ theme }) => theme.colorFaded};
+      width: 100%;
+    }
   }
   @media (max-width: 600px) {
-    flex: ${({ showNav }) => (showNav ? 8 : 0)};
+    flex: ${({ showNav }) => (showNav ? 6 : 0)};
     p {
       font-size: large;
       border-bottom: 1px solid ${({ theme }) => theme.colorFaded};

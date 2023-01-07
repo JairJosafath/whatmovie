@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 import { compare } from "../../util/utilities";
 import { useSearchParams } from "react-router-dom";
 import { movies } from "../../api/api";
+import { Show } from "../../types/show";
+import { Movie } from "../../types/movie";
 
-export const options = [
+export const options: Filter[] = [
   { label: "Movies by Genre", type: "movies", type2: "genre" },
   { label: "Shows by Genre", type: "shows", type2: "genre" },
   { label: "Featured Movies", type: "movies", type2: "featured" },
@@ -32,7 +34,7 @@ export function Home() {
   } = useHome();
 
   const [hero, setHero] = useState<any[]>();
-  const [byGenre, setByGenre] = useState();
+  const [byGenre, setByGenre] = useState<Show[] | Movie[]>();
   const [filter, setFilter] = useState<
     | {
         id: number;
@@ -52,7 +54,8 @@ export function Home() {
       searchParams.get("name") === "none"
     ) {
       setType(options[0]);
-      window.scroll(0, 600);
+      if (window.innerWidth < 760) window.scroll(0, 670);
+      else window.scroll(0, 750);
       return;
     }
     if (
@@ -61,16 +64,19 @@ export function Home() {
       searchParams.get("name") === "none"
     ) {
       setType(options[1]);
-      window.scroll(0, 600);
+      if (window.innerWidth < 760) window.scroll(0, 670);
+      else window.scroll(0, 750);
       return;
     }
     if (searchParams.get("type2") === "featured") {
       if (searchParams.get("type") === "movies") {
         setType(options[2]);
-        window.scroll(0, 600);
+        if (window.innerWidth < 760) window.scroll(0, 670);
+        else window.scroll(0, 750);
       } else {
         setType(options[3]);
-        window.scroll(0, 600);
+        if (window.innerWidth < 760) window.scroll(0, 670);
+        else window.scroll(0, 750);
       }
       const temp = categories
         ?.filter((item) =>
@@ -93,6 +99,9 @@ export function Home() {
     setType(options[index]);
   }, []);
   useEffect(() => {
+    if (type?.label === "results") {
+      return;
+    }
     let listFilteredByType = list
       ?.filter((item: any) => item.type === filter?.type)
       .filter((item: any) => {
@@ -104,7 +113,8 @@ export function Home() {
         }
         if (
           (type?.type === "movies" || type?.type === "shows") &&
-          type?.type2 !== "featured"
+          type?.type2 !== "featured" &&
+          type?.label !== "results"
         )
           return item.genre_ids?.includes(filter?.id);
         return false;
@@ -162,14 +172,31 @@ export function Home() {
   useEffect(() => {
     if ("reset" === searchParams.get("search")) {
       setSearchMode(false);
+
       return;
     }
     if (searchParams.get("search") === "true") {
-      const query = searchParams.get("query");
-      if (query && query.length >= 3) {
-        setQuery(query);
-        if (query) {
+      const queryLocal = searchParams.get("query");
+      if (query?.query === queryLocal) return;
+      if (queryLocal && queryLocal.length >= 3) {
+        setQuery({
+          query: queryLocal,
+          type: type?.type === "movies" ? "movies" : "shows",
+        });
+        setType({
+          label: "results",
+          type:
+            searchParams.get("type") === "shows"
+              ? "shows"
+              : searchParams.get("type") === "movies"
+              ? "movies"
+              : "movies",
+          type2: "",
+        });
+        console.log("type");
+        if (queryLocal) {
           // window.scroll({ top: 0, left: 0, behavior: "smooth" });
+
           setByGenre(results?.results);
           setSearchMode(true);
 
@@ -177,10 +204,10 @@ export function Home() {
         }
       }
     }
-  }, [searchParams, setQuery, results]);
+  }, [searchParams, setQuery, results, type, query?.query]);
 
   useEffect(
-    () => (searchMode ? setQuery("") : undefined),
+    () => (!searchMode ? setQuery(undefined) : undefined),
     [searchMode, setQuery]
   );
 
@@ -207,7 +234,12 @@ export function Home() {
             </>
           )}
 
-          <ListGrid list={byGenre} searchmode={searchMode} />
+          <ListGrid
+            list={byGenre}
+            searchmode={searchMode}
+            type={type}
+            setSearchMode={setSearchMode}
+          />
         </>
       )}
     </>

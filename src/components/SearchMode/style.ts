@@ -9,6 +9,7 @@ export const Content = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
+  /* z-index */
   svg {
     flex: 1;
     height: 80%;

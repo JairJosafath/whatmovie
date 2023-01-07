@@ -22,6 +22,28 @@ export const GLobalStyle = createGlobalStyle<{ darkmode: boolean }>`
 body{
   color: ${({ darkmode }) => (!darkmode ? "#F5F5F5" : "black")};
   background: ${({ darkmode }) => (darkmode ? "#F5F5F5" : "black")};
+    
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: ${({ darkmode }) =>
+      !darkmode ? "rgba(200,200,200,.3)" : "rgba(20,20,20,.3)"};
+  }
+  ::-webkit-scrollbar-thumb:hover{
+  	background: ${({ darkmode }) =>
+      !darkmode ? "rgba(200,200,200,.3)" : "rgba(20,20,20,.3)"};
+  }
+  ::-webkit-scrollbar-thumb:active{
+  	background: ${({ darkmode }) =>
+      !darkmode ? "rgba(200,200,200,.3)" : "rgba(20,20,20,.3)"};
+  }
 }
 `;
 

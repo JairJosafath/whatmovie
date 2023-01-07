@@ -42,7 +42,6 @@ export default function MovieHero({ movie }: Props | any) {
               {movie?.original_title ? movie?.original_title : movie?.name}
             </Title>
             {<p>{movie?.overview}</p>}
-            <button onClick={undefined}>More Info</button>
           </Info>
         </Content>
       </Wrapper>

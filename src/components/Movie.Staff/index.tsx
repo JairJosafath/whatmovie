@@ -1,8 +1,7 @@
 import { img_base_url, poster_size } from "../../api/api";
 import { credits } from "../../mock_data/movie";
 import { Credits } from "../../types/credits";
-import { Wrapper } from "../List.Grid/style";
-import { Content } from "./style";
+import { Content, Wrapper } from "./style";
 
 interface Props {
   credits?: Credits;

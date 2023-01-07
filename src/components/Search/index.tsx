@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import { Search as SearchComponent } from "../Titlebar/style";
-import { Content, Results } from "./style";
+import { AiFillCaretDown, AiFillCaretUp, AiOutlineClose } from "react-icons/ai";
+import { Content, List, Results, Search as SearchComponent } from "./style";
 
 import { movies } from "../../api/api";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -15,6 +14,8 @@ export default function Search({ search, setSearch }: Props) {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
   const nav = useNavigate();
+  const [showMenu, setShowMenu] = useState(false);
+  const [type, setType] = useState("movies");
   const [useParams, setParams] = useSearchParams();
   useEffect(() => {
     setShowResults(true);
@@ -27,7 +28,13 @@ export default function Search({ search, setSearch }: Props) {
       setValue("");
       if (useParams.get("clear") === "true") setParams("", { replace: true });
     }
-  }, [search, setParams, useParams]);
+    if ("reset" === useParams.get("search")) {
+      setSearch(false);
+      setQuery("");
+      setValue("");
+      return;
+    }
+  }, [search, setParams, setSearch, useParams]);
   useEffect(() => {
     const timer = setTimeout(() => {
       setQuery(value);
@@ -45,21 +52,59 @@ export default function Search({ search, setSearch }: Props) {
     } else if (useParams.get("search") === "reset") {
       setParams("", { replace: true });
       setSearch(false);
-    } else nav(`/?search=true&query=${query}`, { replace: true });
-  }, [showResults, nav, setParams, query, useParams, setSearch]);
+    } else nav(`/?search=true&type=${type}&query=${query}`, { replace: true });
+  }, [showResults, nav, setParams, query, useParams, setSearch, type]);
 
   return (
     <>
       <SearchComponent search={search}>
+        {
+          <div>
+            <button className={"type"} onClick={() => setShowMenu(!showMenu)}>
+              {type}
+            </button>
+
+            {
+              <List showMenu={showMenu} search={search}>
+                <div
+                  className={"item"}
+                  onClick={() => {
+                    setShowMenu(!showMenu);
+                    setType("movies");
+                  }}
+                >
+                  movies
+                </div>
+                <div
+                  className={"item"}
+                  onClick={() => {
+                    setShowMenu(!showMenu);
+                    setType("shows");
+                  }}
+                >
+                  shows
+                </div>
+              </List>
+            }
+          </div>
+        }
+        {!showMenu ? (
+          <AiFillCaretDown onClick={() => setShowMenu(!showMenu)} />
+        ) : (
+          <AiFillCaretUp onClick={() => setShowMenu(!showMenu)} />
+        )}
         <input
           type={"text"}
-          placeholder={"search"}
+          placeholder={"search " + type}
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
         <AiOutlineClose
           onClick={() => {
-            setSearch(false);
+            setParams("?search=reset&clear=true", {
+              replace: true,
+            });
+            // setSearch(false);
           }}
         />
       </SearchComponent>

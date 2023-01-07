@@ -39,7 +39,7 @@ export default function ShowHero({
           <Image>
             <source
               srcSet={`${img_base_url}${backdrop_size.desktop}/${
-                hero?.poster_path
+                show?.backdrop_path
               } ${backdrop_size.desktop.substring(1)}w`}
               media={`(min-width: 1200px)`}
             />

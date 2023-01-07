@@ -28,7 +28,7 @@ export const featuredNames = [
 ];
 export interface Filter {
   label: string;
-  type: string;
+  type: "movies" | "shows";
   type2: string;
 }
 

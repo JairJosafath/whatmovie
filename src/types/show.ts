@@ -30,6 +30,7 @@ export interface Show {
   type?: string;
   vote_average?: number;
   vote_count?: number;
+  original_title?: string;
 }
 
 export interface CreatedBy {

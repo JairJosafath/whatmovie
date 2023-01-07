@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import ShowHero from "../../components/Show.Hero";
 import Similar from "../../components/Show.Similar";
-import Staff from "../../components/Staff";
+import Staff from "../../components/Movie.Staff";
 import WatchOn from "../../components/WatchOn";
 import { useShow } from "../../hooks/page/Show/useShow";
 import { useEffect } from "react";
@@ -40,11 +40,7 @@ export default function Show() {
           />
 
           <Season season={season} />
-          <WatchOn
-            name={
-              show ? (show?.title ? show?.title : show?.original_title) : ""
-            }
-          />
+
           <Staff credits={credits} />
           <Similar similar={similar} />
         </>

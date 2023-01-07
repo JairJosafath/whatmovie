@@ -2,17 +2,19 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: relative;
-  top: 550px;
+  top: 580px;
   left: 0;
-  padding: 20px;
-  width: 90%;
-  margin-top: 80px;
+  padding: 20px 0;
+  width: 100%;
+  background: ${({ theme }) => theme.background};
   margin-bottom: 60px;
-  background: red;
   @media (max-width: 760px) {
     top: 500px;
     margin-top: 10px;
-    padding: 15px;
+  }
+  @media (min-width: 1200px) {
+    top: 590px;
+    margin-top: 10px;
   }
 `;
 

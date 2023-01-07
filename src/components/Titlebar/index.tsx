@@ -3,7 +3,7 @@ import { Wrapper, Content, Left, Title, Right } from "./style";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsFillMoonFill, BsFillSunFill, BsSearch } from "react-icons/bs";
 import { DarkmodeContext } from "../../GlobalStyles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Search from "../Search";
 
 interface Props {
@@ -14,6 +14,7 @@ export default function Titlebar({ setShowNav }: Props) {
   const context = useContext(DarkmodeContext);
   const [search, setSearch] = useState(false);
   const [solidBar, setSolidBar] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
   const nav = useNavigate();
 
   useEffect(() => {
@@ -51,7 +52,15 @@ export default function Titlebar({ setShowNav }: Props) {
           What Movie
         </Title>
         <Right search={search}>
-          <BsSearch onClick={() => setSearch(!search)} />
+          <BsSearch
+            onClick={() => {
+              if (search)
+                setSearchParams("?search=reset&clear=true", {
+                  replace: true,
+                });
+              setSearch(!search);
+            }}
+          />
           {context?.darkMode ? (
             <BsFillMoonFill
               onClick={() => context?.setDarkmode(!context?.darkMode)}

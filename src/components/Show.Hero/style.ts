@@ -45,7 +45,7 @@ export const List = styled.ul<{ showMenu: boolean }>`
 export const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  top: 0;
+  top: -20px;
 
   /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Cyanocitta_cristata_FWS_%28uncropped%29.jpg/310px-Cyanocitta_cristata_FWS_%28uncropped%29.jpg"); */
 `;
@@ -126,6 +126,12 @@ export const Info = styled.div<{ showMenu?: boolean }>`
     button {
       width: 90px;
       max-width: 100px;
+    }
+  }
+  @media (min-width: 1200px) {
+    button {
+      width: 90px;
+      z-index: 10;
     }
   }
 `;
@@ -214,7 +220,7 @@ export const Image = styled.picture`
     height: auto;
     max-height: 700px;
     object-fit: cover;
-    object-position: 0 0;
+    object-position: 50% 30%;
     @media (max-width: 1190px) {
       object-position: 50% 50%;
       height: 100%;

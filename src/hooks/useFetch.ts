@@ -10,7 +10,7 @@ export function useFetch() {
     // console.log(link, "link");
     async function fetchData() {
       setLoading(true);
-      console.log("fetching");
+      console.log("fetching" + link.substring(0, -10));
       await fetch(link)
         .then((res) => res.json())
         .then((data) => {
