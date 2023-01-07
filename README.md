@@ -30,7 +30,7 @@ API used
 [api explanation](https://youtu.be/StWpTL_VDos)
 
 ![enter image description here](https://i.ytimg.com/vi/StWpTL_VDos/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC2xSLVD94AbemDfB1ZzLoG16y0bg
-
+)
 TODO:
 
 - searchmode glitches when showing results.
