@@ -4,6 +4,7 @@ export interface Show {
   episode_run_time?: number[];
   first_air_date?: Date;
   genres?: Genre[];
+  genre_ids: number[];
   homepage?: string;
   id?: number;
   in_production?: boolean;

@@ -3,12 +3,12 @@ import Hero from "../../components/Home.Hero";
 import SearchMode from "../../components/SearchMode";
 import ListGrid from "../../components/List.Grid";
 import { useHome } from "../../hooks/page/Home/useHome";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { compare } from "../../util/utilities";
 import { useSearchParams } from "react-router-dom";
-import { movies } from "../../api/api";
 import { Show } from "../../types/show";
 import { Movie } from "../../types/movie";
+import { SearchmodeContext } from "../../contexts/contexts";
 
 export const options: Filter[] = [
   { label: "Movies by Genre", type: "movies", type2: "genre" },
@@ -33,7 +33,7 @@ export function Home() {
     results,
   } = useHome();
 
-  const [hero, setHero] = useState<any[]>();
+  const [hero, setHero] = useState<(Show | Movie)[]>();
   const [byGenre, setByGenre] = useState<Show[] | Movie[]>();
   const [filter, setFilter] = useState<
     | {
@@ -45,8 +45,15 @@ export function Home() {
   >();
   const [type, setType] = useState<Filter>();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [active, setActive] = useState<string | null>("HBO");
-  const [searchMode, setSearchMode] = useState(false);
+  const [active, setActive] = useState<string>();
+  const Searchmodectx:
+    | {
+        searchmode: boolean;
+        setSearchmode: React.Dispatch<React.SetStateAction<boolean>>;
+      }
+    | undefined = useContext(SearchmodeContext);
+
+  useEffect(() => console.log("query", query?.query, query?.type));
   useEffect(() => {
     if (
       searchParams.get("type") === "movies" &&
@@ -102,9 +109,9 @@ export function Home() {
     if (type?.label === "results") {
       return;
     }
-    let listFilteredByType = list
-      ?.filter((item: any) => item.type === filter?.type)
-      .filter((item: any) => {
+    let listFilteredByType: (Movie | Show)[] | undefined = list
+      ?.filter((item) => item.type === filter?.type)
+      .filter((item) => {
         if (item?.type === "companies") {
           return false;
         }
@@ -116,11 +123,12 @@ export function Home() {
           type?.type2 !== "featured" &&
           type?.label !== "results"
         )
-          return item.genre_ids?.includes(filter?.id);
+          return item.genre_ids?.includes(filter?.id ? filter?.id : -1);
         return false;
       });
 
-    if (listFilteredByType?.length < 1) {
+    if (listFilteredByType?.length === 0) {
+      console.log("hola");
       switch (filter?.name?.toLowerCase().replace(" ", "")) {
         case "popular":
           compare(filter?.type, "movies")
@@ -170,45 +178,55 @@ export function Home() {
   );
 
   useEffect(() => {
-    if ("reset" === searchParams.get("search")) {
-      setSearchMode(false);
+    // if ("reset" === searchParams.get("search")) {
+    //   setSearchMode(false);
 
-      return;
-    }
-    if (searchParams.get("search") === "true") {
-      const queryLocal = searchParams.get("query");
-      if (query?.query === queryLocal) return;
-      if (queryLocal && queryLocal.length >= 3) {
-        setQuery({
-          query: queryLocal,
-          type: type?.type === "movies" ? "movies" : "shows",
-        });
-        setType({
-          label: "results",
-          type:
-            searchParams.get("type") === "shows"
-              ? "shows"
-              : searchParams.get("type") === "movies"
-              ? "movies"
-              : "movies",
-          type2: "",
-        });
-        console.log("type");
-        if (queryLocal) {
-          // window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    //   return;
+    // }
+    // if (searchParams.get("search") === "true") {
+    const queryLocal = searchParams.get("query");
+    // if (queryLocal === query?.query) return;
+    if (queryLocal && queryLocal.length >= 3) {
+      setQuery({
+        query: queryLocal,
+        type: type?.type === "movies" ? "movies" : "shows",
+      });
+      setType({
+        label: "results",
+        type:
+          searchParams.get("type") === "shows"
+            ? "shows"
+            : searchParams.get("type") === "movies"
+            ? "movies"
+            : "movies",
+        type2: "",
+      });
+      console.log("type");
+      if (queryLocal) {
+        // window.scroll({ top: 0, left: 0, behavior: "smooth" });
+        setByGenre(results?.results);
+        Searchmodectx?.setSearchmode(true);
 
-          setByGenre(results?.results);
-          setSearchMode(true);
-
-          // return () => clearTimeout(timer);
-        }
+        // return () => clearTimeout(timer);
       }
     }
-  }, [searchParams, setQuery, results, type, query?.query]);
+    // }
+    return () => setQuery(undefined);
+  }, [
+    searchParams,
+    setQuery,
+    results,
+    type?.label,
+    type?.type,
+    type?.type2,
+    query?.query,
+    query?.type,
+    Searchmodectx,
+  ]);
 
   useEffect(
-    () => (!searchMode ? setQuery(undefined) : undefined),
-    [searchMode, setQuery]
+    () => (Searchmodectx?.searchmode ? setQuery(undefined) : undefined),
+    [Searchmodectx?.searchmode, setQuery]
   );
 
   return (
@@ -217,8 +235,8 @@ export function Home() {
         <h1>Loading</h1>
       ) : (
         <>
-          {searchMode ? (
-            <SearchMode setSearchmode={setSearchMode} query={query} />
+          {Searchmodectx?.searchmode ? (
+            <SearchMode query={query} />
           ) : (
             <>
               <Hero hero={hero} />
@@ -234,12 +252,7 @@ export function Home() {
             </>
           )}
 
-          <ListGrid
-            list={byGenre}
-            searchmode={searchMode}
-            type={type}
-            setSearchMode={setSearchMode}
-          />
+          <ListGrid list={byGenre} type={type} />
         </>
       )}
     </>

@@ -1,5 +1,4 @@
 import { img_base_url, poster_size } from "../../api/api";
-import { credits } from "../../mock_data/movie";
 import { Credits } from "../../types/credits";
 import { Content, Wrapper } from "./style";
 

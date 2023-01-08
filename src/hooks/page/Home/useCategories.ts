@@ -11,14 +11,9 @@ export function useCategories() {
     | undefined
   >();
   const [loading, setLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError] = useState(false);
   //Categories Movies
-  const {
-    setLink: setCategoriesLink,
-    loading: loadingCategories,
-    isErr: errorCategories,
-    data: dataCategories,
-  } = useFetch();
+  const { setLink: setCategoriesLink, data: dataCategories } = useFetch();
 
   useEffect(() => {
     setLoading(true);
@@ -28,12 +23,8 @@ export function useCategories() {
   }, [setCategoriesLink]);
 
   //Categories Shows
-  const {
-    setLink: setCategoriesLinkShows,
-    loading: loadingCategoriesShows,
-    isErr: errorCategoriesShows,
-    data: dataCategoriesShows,
-  } = useFetch();
+  const { setLink: setCategoriesLinkShows, data: dataCategoriesShows } =
+    useFetch();
 
   useEffect(() => {
     setLoading(true);

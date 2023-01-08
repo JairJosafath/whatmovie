@@ -1,7 +1,6 @@
-import { redirect, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { img_base_url, poster_size } from "../../api/api";
 import { Similar as SimilarInterface } from "../../types/movie";
-import { addAttr } from "../../util/utilities";
 import { Content, Movie, Wrapper } from "./style";
 
 interface Props {

@@ -1,13 +1,21 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useSearchParams } from "react-router-dom";
+import { SearchmodeContext } from "../../contexts/contexts";
 import { Wrapper, Content, TopBar } from "./style";
+import { useContext } from "react";
 
 interface Props {
-  setSearchmode: React.Dispatch<React.SetStateAction<boolean>>;
   query: { type: "movies" | "shows" | undefined; query: string } | undefined;
 }
-export default function SearchMode({ setSearchmode, query }: Props) {
-  const [searchParams, setSearchParams] = useSearchParams();
+export default function SearchMode({ query }: Props) {
+  const [, setSearchParams] = useSearchParams();
+  const Searchmodectx:
+    | {
+        searchmode: boolean;
+        setSearchmode: React.Dispatch<React.SetStateAction<boolean>>;
+      }
+    | undefined = useContext(SearchmodeContext);
+
   return (
     <Wrapper>
       <Content>
@@ -16,7 +24,7 @@ export default function SearchMode({ setSearchmode, query }: Props) {
             setSearchParams("?search=reset&clear=true", {
               replace: true,
             });
-            setSearchmode(false);
+            Searchmodectx?.setSearchmode(false);
           }}
         />
         <TopBar>{query?.query} Results</TopBar>

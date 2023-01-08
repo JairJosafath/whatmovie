@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { backdrop_size, img_base_url } from "../../api/api";
 import { Movie } from "../../types/movie";
 import { Content, Image, Info, Title, Wrapper } from "./style";
@@ -8,8 +7,6 @@ interface Props {
 }
 
 export default function MovieHero({ movie }: Props | any) {
-  const [hasVideo, setHasVideo] = useState(movie?.video);
-
   return (
     <>
       <Wrapper>

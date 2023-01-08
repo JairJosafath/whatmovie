@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import { backdrop_size, img_base_url } from "../../api/api";
 
 export const Wrapper = styled.div`
   position: absolute;
   width: 100%;
   top: -20px;
-
-  /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Cyanocitta_cristata_FWS_%28uncropped%29.jpg/310px-Cyanocitta_cristata_FWS_%28uncropped%29.jpg"); */
 `;
 
 export const Content = styled.div`

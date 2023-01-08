@@ -2,84 +2,63 @@ import { useEffect, useState } from "react";
 import { movies, shows } from "../../../api/api";
 import { Movie } from "../../../types/movie";
 import { Show } from "../../../types/show";
-import { addAttr, compare, uniqueArray } from "../../../util/utilities";
+import {
+  addAttr,
+  compare,
+  compareLite,
+  uniqueArray,
+} from "../../../util/utilities";
 import { useFetch } from "../../useFetch";
 
 export function useFilterBy() {
   //show grid of movies when filter is activated
   const [list, setList] = useState<(Movie | Show)[]>();
   const [loading, setLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError] = useState(false);
   //filter by
   //movies popular" | "top_rated" | "latest" | "now_playing" | "upcoming"
   const {
     data: topRated,
     loading: topRatedLoading,
-    isErr: topRatedErr,
     setLink: setTopRatedLink,
   } = useFetch();
   useEffect(() => {
+    console.log("USEFILTERBY,TOPRATED");
     if (!loading) {
       setLoading(true);
     }
     console.log("fetching toprated");
     setTopRatedLink(movies.getMoviesBy("top_rated"));
-    return () => {
-      setTopRatedLink("");
-    };
-  }, [setTopRatedLink]);
+  }, [setTopRatedLink, loading]);
   const {
     data: popular,
     loading: popularLoading,
-    isErr: popularErr,
     setLink: setPopularLink,
   } = useFetch();
   useEffect(() => {
+    console.log("USEFILTERBY,POP");
     if (!loading) {
       setLoading(true);
     }
     console.log("fetching popular");
     setPopularLink(movies.getMoviesBy("popular"));
-    return () => {
-      setPopularLink("");
-    };
-  }, [setPopularLink]);
-  // const {
-  //   data: latest,
-  //   loading: latestLoading,
-  //   isErr: latestErr,
-  //   setLink: setLatestLink,
-  // } = useFetch();
-  // useEffect(() => {
-  //   if (!loading) {
-  //     setLoading(true);
-  //   }
-
-  //   setLatestLink(movies.getMoviesBy("latest"));
-  //   return () => {
-  //     setLatestLink("");
-  //   };
-  // }, [setLatestLink]);
+  }, [setPopularLink, loading]);
   const {
     data: nowPlaying,
     loading: nowPlayingLoading,
-    isErr: nowPlayingErr,
     setLink: setNowPlayingLink,
   } = useFetch();
   useEffect(() => {
+    console.log("USEFILTERBY,setNowPlaying");
     if (!loading) {
       setLoading(true);
     }
     console.log("fetching nowplaying");
     setNowPlayingLink(movies.getMoviesBy("now_playing"));
-    return () => {
-      setNowPlayingLink("");
-    };
-  }, [setNowPlayingLink]);
+  }, [setNowPlayingLink, loading]);
   const {
     data: upcoming,
     loading: upcomingLoading,
-    isErr: upcomingErr,
     setLink: setUpcomingLink,
   } = useFetch();
   useEffect(() => {
@@ -88,32 +67,20 @@ export function useFilterBy() {
     }
     console.log("fetching upcoming");
     setUpcomingLink(movies.getMoviesBy("upcoming"));
-    return () => {
-      setUpcomingLink("");
-    };
-  }, [setUpcomingLink]);
+  }, [setUpcomingLink, loading]);
   //filter by
-  //shows "popular" | "top_rated" | "latest" | "airing_today" | "on_the_air"
-  const {
-    data: topRatedShow,
-    loading: topRatedLoadingShow,
-    isErr: topRatedErrShow,
-    setLink: setTopRatedLinkShow,
-  } = useFetch();
+  //shows "popular" | "top_rated" | "latest,loading:latestLoading" | "airing_today" | "on_the_air"
+  const { data: topRatedShow, setLink: setTopRatedLinkShow } = useFetch();
   useEffect(() => {
     if (!loading) {
       setLoading(true);
     }
     console.log("fetching toprated shows");
     setTopRatedLinkShow(shows.getShowsBy("top_rated"));
-    return () => {
-      setTopRatedLinkShow("");
-    };
-  }, [setTopRatedLinkShow]);
+  }, [setTopRatedLinkShow, loading]);
   const {
     data: popularShow,
-    loading: popularLoadingShow,
-    isErr: popularErrShow,
+    loading: popularShowLoading,
     setLink: setPopularLinkShow,
   } = useFetch();
   useEffect(() => {
@@ -122,15 +89,11 @@ export function useFilterBy() {
     }
     console.log("fetching popular shows");
     setPopularLinkShow(shows.getShowsBy("popular"));
-    return () => {
-      setPopularLinkShow("");
-    };
-  }, [setPopularLinkShow]);
+  }, [setPopularLinkShow, loading]);
 
   const {
     data: airingToday,
     loading: airingTodayLoading,
-    isErr: airingTodayErr,
     setLink: setAiringTodayLink,
   } = useFetch();
   useEffect(() => {
@@ -139,12 +102,31 @@ export function useFilterBy() {
     }
     console.log("fetching airting today");
     setAiringTodayLink(shows.getShowsBy("airing_today"));
-    return () => {
-      setAiringTodayLink("");
-    };
-  }, [setAiringTodayLink]);
+  }, [setAiringTodayLink, loading]);
 
   useEffect(() => {
+    const temp2 = uniqueArray(
+      topRated &&
+        popular &&
+        upcoming &&
+        nowPlaying &&
+        topRatedShow &&
+        popularShow &&
+        airingToday
+        ? [
+            ...addAttr(topRated?.results, { type: "movies" }),
+            ...addAttr(popular?.results, { type: "movies" }),
+            ...addAttr(upcoming?.results, { type: "movies" }),
+
+            ...addAttr(nowPlaying?.results, { type: "movies" }),
+            ...addAttr(topRatedShow?.results, { type: "shows" }),
+            ...addAttr(popularShow?.results, { type: "shows" }),
+
+            ...addAttr(airingToday?.results, { type: "shows" }),
+          ]
+        : []
+    );
+
     if (
       loading &&
       topRated &&
@@ -154,33 +136,8 @@ export function useFilterBy() {
       topRatedShow &&
       popularShow &&
       airingToday &&
-      !compare(
-        list,
-        uniqueArray([
-          ...addAttr(topRated.results, { type: "movies" }),
-          ...addAttr(popular.results, { type: "movies" }),
-          ...addAttr(upcoming.results, { type: "movies" }),
-
-          ...addAttr(nowPlaying.results, { type: "movies" }),
-          ...addAttr(topRatedShow.results, { type: "shows" }),
-          ...addAttr(popularShow.results, { type: "shows" }),
-
-          ...addAttr(airingToday.results, { type: "shows" }),
-        ])
-      )
+      !compareLite(temp2, list)
     ) {
-      const temp2 = uniqueArray([
-        ...addAttr(topRated.results, { type: "movies" }),
-        ...addAttr(popular.results, { type: "movies" }),
-        ...addAttr(upcoming.results, { type: "movies" }),
-
-        ...addAttr(nowPlaying.results, { type: "movies" }),
-        ...addAttr(topRatedShow.results, { type: "shows" }),
-        ...addAttr(popularShow.results, { type: "shows" }),
-
-        ...addAttr(airingToday.results, { type: "shows" }),
-      ]);
-
       setList(uniqueArray(temp2));
       setLoading(false);
     }
@@ -188,16 +145,15 @@ export function useFilterBy() {
     topRated,
     popular,
     upcoming,
-
     nowPlaying,
     topRatedShow,
     popularShow,
-
     airingToday,
-
     list,
     loading,
   ]);
+
+  useEffect(() => console.log(list, "list"), [list]);
 
   return {
     list,

@@ -1,5 +1,3 @@
-import { Movie, Show } from "../../trash/types";
-
 export function removeDupes(
   array: any[] | { id: number; name: string }[] | undefined
 ) {
@@ -26,7 +24,11 @@ export function addAttr(array: any[], attr: any) {
 }
 
 export function compare(object1: any, object2: any) {
-  return JSON.stringify(object1) === JSON.stringify(object2);
+  if (!object1 || !object2) return false;
+  else return JSON.stringify(object1) === JSON.stringify(object2);
+}
+export function compareLite(object1: any, object2: any) {
+  return JSON.stringify(object1).includes(JSON.stringify(object2));
 }
 
 export function shuffle(array: any[]) {

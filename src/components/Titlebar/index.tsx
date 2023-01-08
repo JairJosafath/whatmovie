@@ -1,10 +1,10 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Wrapper, Content, Left, Title, Right } from "./style";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { BsFillMoonFill, BsFillSunFill, BsSearch } from "react-icons/bs";
-import { DarkmodeContext } from "../../GlobalStyles";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Search from "../Search";
+import { DarkmodeContext } from "../../contexts/contexts";
 
 interface Props {
   setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +14,7 @@ export default function Titlebar({ setShowNav }: Props) {
   const context = useContext(DarkmodeContext);
   const [search, setSearch] = useState(false);
   const [solidBar, setSolidBar] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const nav = useNavigate();
 
   useEffect(() => {

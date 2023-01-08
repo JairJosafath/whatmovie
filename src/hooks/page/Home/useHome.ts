@@ -9,8 +9,6 @@ export function useHome() {
   //handles the error state
   const [error, setError] = useState<boolean>();
 
-  // const { hero, loading: loadingHero, isError: isErrorHero } = useHero();
-
   const {
     list,
     topRated,
@@ -21,30 +19,18 @@ export function useHome() {
     popularShow,
     airingToday,
     loading: loadingFiltered,
-    isError: isErrorFiltered,
   } = useFilterBy();
 
-  const {
-    categories,
-    loading: loadingCategories,
-    isError: isErrorCategories,
-  } = useCategories();
-
+  const { categories, loading: loadingCategories } = useCategories();
+  const { setQuery, query, results, loading: loadingSearch } = useSearch();
   useEffect(() => {
-    if (loadingCategories || loadingFiltered) {
+    if (loadingCategories || loadingFiltered || loadingSearch) {
       setLoading(true);
-    } else if (!loadingCategories && !loadingFiltered) {
+    } else if (!loadingCategories && !loadingFiltered && !loadingSearch) {
       setLoading(false);
     }
-  }, [loadingFiltered, loadingCategories]);
+  }, [loadingFiltered, loadingCategories, loadingSearch]);
 
-  const {
-    setQuery,
-    query,
-    results,
-    loading: loadingSearch,
-    isError: isErrorSearch,
-  } = useSearch();
   return {
     categories,
     list,

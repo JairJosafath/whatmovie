@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { movies, shows } from "../../../api/api";
-import { movies as moviesMock } from "../../../mock_data/movie";
-import { shows as showsMock } from "../../../mock_data/shows";
 import { useFetch } from "../../useFetch";
 
 export function useSearch() {
@@ -10,29 +8,22 @@ export function useSearch() {
     { query: string; type: "movies" | "shows" | undefined } | undefined
   >({ query: "", type: "movies" });
   const [loading, setLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const {
-    setLink,
-    loading: loadingSearch,
-    isErr: isErrorSearch,
-    data,
-  } = useFetch();
+  const [isError] = useState(false);
+  const { setLink, data } = useFetch();
   useEffect(() => {
-    if (query) {
-      // console.log("queriying db");
+    if (query?.query) {
+      console.log("queriying db");
       setLoading(true);
 
       if (query?.type === "movies") {
-        // console.log(" mock queryy on movies");
         setLink(movies.search(query?.query));
         // setResults(moviesMock);
       } else if (query?.type === "shows") {
-        // console.log(" mock queryy on shows");
         setLink(shows.search(query?.query));
         // setResults(showsMock);
       }
     }
-  }, [query, setLink]);
+  }, [query?.query, query?.type, setLink]);
   useEffect(() => {
     if (data) {
       setResults(data);

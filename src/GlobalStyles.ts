@@ -19,7 +19,10 @@ export const theme = {
 };
 
 export const GLobalStyle = createGlobalStyle<{ darkmode: boolean }>`
+
 body{
+  padding:0;
+margin:0;
   color: ${({ darkmode }) => (!darkmode ? "#F5F5F5" : "black")};
   background: ${({ darkmode }) => (darkmode ? "#F5F5F5" : "black")};
     
@@ -46,8 +49,3 @@ body{
   }
 }
 `;
-
-export const DarkmodeContext = createContext<{
-  darkMode: boolean;
-  setDarkmode: React.Dispatch<React.SetStateAction<boolean>>;
-} | null>(null);

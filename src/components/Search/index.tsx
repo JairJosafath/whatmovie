@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { AiFillCaretDown, AiFillCaretUp, AiOutlineClose } from "react-icons/ai";
-import { Content, List, Results, Search as SearchComponent } from "./style";
-
-import { movies } from "../../api/api";
+import { List, Search as SearchComponent } from "./style";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { SearchmodeContext } from "../../contexts/contexts";
 
 interface Props {
   search: boolean;
@@ -17,6 +16,13 @@ export default function Search({ search, setSearch }: Props) {
   const [showMenu, setShowMenu] = useState(false);
   const [type, setType] = useState("movies");
   const [useParams, setParams] = useSearchParams();
+  const Searchmodectx:
+    | {
+        searchmode: boolean;
+        setSearchmode: React.Dispatch<React.SetStateAction<boolean>>;
+      }
+    | undefined = useContext(SearchmodeContext);
+
   useEffect(() => {
     setShowResults(true);
   }, [query]);
@@ -24,24 +30,22 @@ export default function Search({ search, setSearch }: Props) {
     console.log("reset serach");
     if (!search) {
       setShowResults(false);
-      setQuery("");
       setValue("");
       if (useParams.get("clear") === "true") setParams("", { replace: true });
     }
     if ("reset" === useParams.get("search")) {
       setSearch(false);
-      setQuery("");
       setValue("");
       return;
     }
   }, [search, setParams, setSearch, useParams]);
   useEffect(() => {
+    if (value.length >= 3) Searchmodectx?.setSearchmode(true);
     const timer = setTimeout(() => {
       setQuery(value);
     }, 500);
-
     return () => clearTimeout(timer);
-  }, [query, value]);
+  }, [, query, value]);
   useEffect(() => {
     console.log("sweeerving");
     if (!showResults) {
@@ -52,8 +56,19 @@ export default function Search({ search, setSearch }: Props) {
     } else if (useParams.get("search") === "reset") {
       setParams("", { replace: true });
       setSearch(false);
-    } else nav(`/?search=true&type=${type}&query=${query}`, { replace: true });
-  }, [showResults, nav, setParams, query, useParams, setSearch, type]);
+    } else if (query && Searchmodectx?.searchmode) {
+      nav(`/?search=true&type=${type}&query=${query}`, { replace: true });
+    }
+  }, [
+    showResults,
+    nav,
+    setParams,
+    query,
+    useParams,
+    setSearch,
+    type,
+    Searchmodectx?.searchmode,
+  ]);
 
   return (
     <>

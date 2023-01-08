@@ -25,7 +25,6 @@ export function useFetch() {
       setLoading(false);
     }
     if (link) fetchData();
-    return () => setLink("");
   }, [link]);
 
   return {
@@ -35,27 +34,3 @@ export function useFetch() {
     setLink,
   };
 }
-
-// interface Entity {
-//   id: number;
-//   backdrop_path: string | null;
-//   genres: { id: number; name: string }[];
-//   overview: string | null;
-//   popularity: number;
-//   poster_path: string | null;
-
-//   any: any;
-// }
-
-// interface Movie extends Entity {
-//   release_date: string | null;
-//   title: string;
-//   video: boolean;
-// }
-
-// interface Person {
-//   id: number;
-//   known_for_department: string;
-//   name: string;
-
-// }

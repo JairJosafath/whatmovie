@@ -2,13 +2,8 @@
 //   genres: { id: number; name: string }[];
 // }
 
-import { useCallback, useEffect, useState } from "react";
-import {
-  AiOutlineArrowDown,
-  AiOutlineCaretDown,
-  AiOutlineCaretUp,
-} from "react-icons/ai";
-import { companies, img_base_url, poster_size } from "../../api/api";
+import { useEffect, useState } from "react";
+import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 import { options } from "../../Pages/Home";
 import { Wrapper, Genre, Content, Menu } from "./style";
 
@@ -56,8 +51,8 @@ interface Props {
 
   type: Filter | undefined;
   setType: React.Dispatch<React.SetStateAction<Filter | undefined>>;
-  active: string | null;
-  setActive: React.Dispatch<React.SetStateAction<string | null>>;
+  active: string | undefined;
+  setActive: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
 export function Filters({
@@ -117,14 +112,6 @@ export function Filters({
                 )
                 .map(({ id, name, type }, index) => (
                   <Genre
-                    isCompany={type === "companies" ? true : false}
-                    isDark={
-                      name.includes("HBO") ||
-                      name.includes("YouTube") ||
-                      name.includes("Disney")
-                        ? true
-                        : false
-                    }
                     isActive={name === active ? true : false}
                     key={`${type}-${id}-${index}`}
                     onClick={() => {
@@ -133,17 +120,7 @@ export function Filters({
                     }}
                     className={name === active ? "active" : ""}
                   >
-                    {type === "companies" ? (
-                      <img
-                        src={`${img_base_url}${poster_size.xs}${
-                          companies.filter((company) => id === company.id)[0]
-                            .logo_path
-                        }`}
-                        alt={name}
-                      />
-                    ) : (
-                      name
-                    )}
+                    {name}
                   </Genre>
                 ))
             : null}

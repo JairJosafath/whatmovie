@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { gapiId, gKey, gsource } from "../../api/api";
 import { useFetch } from "../../hooks/useFetch";
-import { Gres } from "../../types/gres";
-import { Movie } from "../../types/movie";
 import { Wrapper } from "../Home.Filters/style";
 import { Content } from "./style";
 
@@ -18,7 +16,7 @@ interface Props {
 
 export default function WatchOn({ name }: Props) {
   // const [searchUrl, setSearchUrl] = useState("");
-  const { loading, isErr, data, setLink } = useFetch();
+  const { data, setLink } = useFetch();
   useEffect(() => {
     const res = data;
     console.log("data", data);

@@ -27,10 +27,6 @@ export default function ShowHero({
     setHero(season);
   }, [season]);
 
-  useEffect(
-    () => console.log(show?.seasons ? show?.seasons : null, "testttstsest"),
-    [seasonId]
-  );
   return (
     <>
       <Wrapper>
