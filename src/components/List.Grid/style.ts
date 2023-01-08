@@ -7,8 +7,7 @@ export const Wrapper = styled.div<{ searchmode: boolean }>`
     margin-left: 60px;
   }
   @media (max-width: 760px) {
-    top: 420px;
-    top: ${({ searchmode }) => (searchmode ? "40px" : 0)};
+    top: ${({ searchmode }) => (searchmode ? "40px" : "420px")};
   }
 `;
 export const Content = styled.div`
