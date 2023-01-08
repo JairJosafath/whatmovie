@@ -100,4 +100,8 @@ export const Search = styled.div<{ search: boolean }>`
     font-size: large;
     cursor: pointer;
   }
+
+  @media (max-width: 760px) {
+    height: ${({ search }) => (search ? "200%" : 0)};
+  }
 `;
