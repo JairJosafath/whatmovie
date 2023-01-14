@@ -2,6 +2,8 @@ export const gKey = "";
 export const gapiId = "";
 export const gsource = "https://customsearch.googleapis.com/customsearch/v1";
 export const source = "https://api.themoviedb.org/3";
+//instead of exposing the api like this, use a serverless function like AWS lambda to use the api from there and request it from the client side.
+//i'll come back to it if I have time, I got alot of projects I want to do, and they will probably include the best practices for api key usage
 export const key = "b1b2759638dee8b830bb70c97e34f3dd";
 export const img_base_url = "https://image.tmdb.org/t/p/";
 export const backdrop_size = {
